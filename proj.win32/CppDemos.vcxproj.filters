@@ -7,6 +7,12 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\util">
+      <UniqueIdentifier>{40510820-15a6-41b6-a9aa-b9d9e82c8511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\include">
+      <UniqueIdentifier>{551f09ba-2661-40d5-9402-1aba08d1dd35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -15,7 +21,13 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+    <ClCompile Include="..\Classes\util\cocos_util.cpp">
+      <Filter>Classes\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\util\CocosWindow.cpp">
+      <Filter>Classes\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StartScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,7 +38,16 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
+    <ClInclude Include="..\Classes\util\cocos_util.h">
+      <Filter>Classes\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\util\CocosWindow.h">
+      <Filter>Classes\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\cocos_include.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StartScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>

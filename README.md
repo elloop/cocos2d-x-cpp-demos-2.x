@@ -1,5 +1,5 @@
 
-understanding-cocos2d-x
+CppDemos_2_x
 ----
 
 ## Common Components
