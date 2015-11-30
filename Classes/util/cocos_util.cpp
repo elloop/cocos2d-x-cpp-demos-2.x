@@ -11,10 +11,22 @@ void CocosUtil::markPositionWithDot(cocos2d::CCNode *parent, cocos2d::CCPoint po
     CCLOG("mark pos: (%.2f, %.2f)\n", pos.x, pos.y);
 }
 
-void CocosUtil::log(const char *format, ...) {
-    va_list args;
-    va_start(args, );
+void CocosUtil::log() {
+    //const int MAX_LOG_LENGTH = 16384; // 16k
+    //char msg[MAX_LOG_LENGTH];
+    //va_list args;
+    //va_start(args, format);
+    //vsnprintf_s(msg, MAX_LOG_LENGTH, MAX_LOG_LENGTH, format, args);
+    //va_end(args);
 
+    
+}
 
-    CCLOG(format, );
+void CocosUtil::markCorners(cocos2d::CCNode *parent, float radius/*=5*/) {
+    assert(parent);
+    CCSize size = parent->getContentSize();
+    markPositionWithDot(parent, CCPoint(0, 0), radius, ccc4f(1, 0, 0, 1));
+    markPositionWithDot(parent, CCPoint(0, size.height), radius, ccc4f(0, 1, 0, 1));
+    markPositionWithDot(parent, CCPoint(size.width, size.height), radius, ccc4f(0, 0, 1, 1));
+    markPositionWithDot(parent, CCPoint(size.width, 0), radius, ccc4f(1, 1, 0, 1));
 }

@@ -9,11 +9,9 @@ public:
         cocos2d::CCPoint pos,
         float radius = 10,
         cocos2d::ccColor4F color4f = cocos2d::ccc4f(1.f, 0.f, 0.f, 1.f));
-#ifdef WIN32
-    static void log(const char *format, ...);
-#else
-    static void log() {}
-#endif
+    static void markCorners(cocos2d::CCNode *parent, float radius=5);
+
+    static void log();
 };
 
 #endif
