@@ -13,7 +13,8 @@ void CocosUtil::markPositionWithDot(cocos2d::CCNode *parent, cocos2d::CCPoint po
 
 void CocosUtil::log(const char *format, ...) {
     va_list args;
-    va_start(args, int);
+    va_start(args, );
+
 
     CCLOG(format, );
 }

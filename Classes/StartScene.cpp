@@ -24,7 +24,7 @@ bool StartScene::init() {
 void StartScene::addTestScene() {
     CCSprite *pic1 = CCSprite::create("DemoIcon/bow.jpg");
     CCSize s1 = pic1->getContentSize();
-    CocosUtil::markPositionWithDot(pic1, CCPoint(-s1.width / 2, s1.height / 2));
+    CocosUtil::markPositionWeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeithDot(pic1, CCPoint(-s1.width / 2, s1.height / 2));
     CocosUtil::markPositionWithDot(pic1, CCPoint(-s1.width / 2, -s1.height / 2));
     CocosUtil::markPositionWithDot(pic1, CCPoint(s1.width / 2, s1.height / 2));
     CocosUtil::markPositionWithDot(pic1, CCPoint(s1.width / 2, -s1.height / 2));
