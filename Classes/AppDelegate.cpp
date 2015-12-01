@@ -1,5 +1,7 @@
 #include "AppDelegate.h"
 #include "StartScene.h"
+#include "util/cocos_util.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -24,6 +26,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
+
+    CocosUtil::openLog();
 
     CCScene * pScene = CCScene::create();
     StartScene * layer = StartScene::create();
