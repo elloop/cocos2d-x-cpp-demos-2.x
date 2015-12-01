@@ -6,28 +6,34 @@
 class TestItem : public cocos2d::CCNode {
 public:
     TestItem(){}
-    static TestItem * create(const std::string &pic, const std::string &desc);
+    static TestItem * create(const std::string &pic, const std::string &desc, 
+                             float width, float height);
 private:
     CREATE_FUNC(TestItem);
-    bool initWithStrings(const std::string & pic, const std::string & desc);
+    bool initWithStrings(const std::string & pic, const std::string & desc, 
+                         float width, float height);
 };
 
 
 class StartScene : public cocos2d::CCLayer {
 public:
-
-    
-
     CREATE_FUNC(StartScene);
     bool init() override;
     void addTestScene();
     void addTestData();
     void StartScene::quitGame(cocos2d::CCObject* obj);
 
+    // touch events.
+    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+
 protected:
     StartScene() {}
     ~StartScene();
     void purgeTestData();
+    void addQuitMenu();
+
 private:
     class TestDataItem {
     public:
@@ -38,7 +44,6 @@ private:
         std::string     description_;
     };
     typedef std::vector<TestDataItem*> TestSet;
-
     TestSet     testSet_;
 };
 

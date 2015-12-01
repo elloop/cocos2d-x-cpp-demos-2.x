@@ -10,7 +10,8 @@ public:
         float radius = 10,
         cocos2d::ccColor4F color4f = cocos2d::ccc4f(1.f, 0.f, 0.f, 1.f));
     static void markCorners(cocos2d::CCNode *parent, float radius=5);
-
+    static cocos2d::ccColor4F randomC4f(float alpah = 1.0);
+    static cocos2d::ccColor4B randomC4b(unsigned char alpha = 255);
     static void log();
 };
 

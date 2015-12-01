@@ -7,13 +7,10 @@ USING_NS_CC_EXT;
 
 bool StartScene::init() {
     if (CCLayer::init()) {
-        CocosUtil::markCorners(this, 10);
-        CCMenuItemImage *btn = CCMenuItemImage::create("", "", this, menu_selector(StartScene::quitGame));
-        btn->setPosition(CocosWindow::origin());
-        CCMenu *menu = CCMenu::create(btn, nullptr);
-
+        addQuitMenu();
         addTestData();
         addTestScene();
+        CocosUtil::markCorners(this, 10);
         return true;
     }
     return false;
@@ -33,41 +30,35 @@ void StartScene::addTestScene() {
         nullptr);*/
     float height(0);
     float maxWidth(0), maxHeight(0);
-    //CCNode *container = CCNode::create();
-    //for (auto iter : testSet_) {
-    //    TestItem * item = TestItem::create(iter->iconPic_, iter->description_);
-    //    //CocosUtil::markCorners(item);
-    //    item->setPosition(CCPoint(0, height));
-    //    container->addChild(item);
-    //    height += item->getContentSize().height;
-    //    if (maxWidth < item->getContentSize().width) {
-    //        maxWidth = item->getContentSize().width;
-    //    }
-    //    if (maxHeight < item->getContentSize().height) {
-    //        maxHeight = item->getContentSize().height;
-    //    }
-    //}
-    //container->setContentSize(CCSize(maxWidth, height));
-    //CCScrollView * scrollview = CCScrollView::create(container->getContentSize(), container);
-    //scrollview->setDirection(kCCScrollViewDirectionVertical);
-    //auto size = scrollview->getContentSize();
-    //addChild(scrollview);
+
+    // 单元格宽度、高度
+    auto winSize = CocosWindow::size();
+    float cellHeight = winSize.height / 3;
+    float cellWidth = winSize.width;
+
+    // scrollview的container
+    CCNode *container = CCNode::create();
+    for (auto iter : testSet_) {
+        TestItem * item = TestItem::create(iter->iconPic_, iter->description_, cellWidth, cellHeight);
+        //CocosUtil::markCorners(item);
+        item->setPosition(CCPoint(0, height));
+        container->addChild(item);
+        height += cellHeight;
+    }
+    container->setContentSize(CCSize(cellWidth, height));
 
     auto scroll = CCScrollView::create();
-    scroll->setContentSize(CCSize(200, 200));
+    scroll->setContainer(container);
+    scroll->setPosition(CocosWindow::center() - CCPoint(winSize/2));
+    scroll->setViewSize(winSize);
     CocosUtil::markCorners(scroll);
     addChild(scroll);
-
-    auto s = CCSprite::create("DemoIcon/bow.jpg");
-    if (s) {
-        scroll->setContainer(s);
-    }
-
+    auto of = scroll->getContentOffset();
 }
 
 void StartScene::addTestData() {
     testSet_.push_back(new TestDataItem("DemoIcon/bow.jpg", "SpriteTest"));
-    testSet_.push_back(new TestDataItem("DemoIcon/push.jpg", "MenuTest"));
+    testSet_.push_back(new TestDataItem("DemoIcon/superman.jpg", "MenuTest"));
     testSet_.push_back(new TestDataItem("DemoIcon/fight.jpg", "AnimationTest"));
     testSet_.push_back(new TestDataItem("DemoIcon/man-red-hair.jpg", "LabelTest"));
     testSet_.push_back(new TestDataItem("DemoIcon/automan.jpg", "AudioTest"));
@@ -85,39 +76,83 @@ void StartScene::purgeTestData() {
     TestSet().swap(testSet_);
 }
 
-TestItem * TestItem::create(const std::string &pic, const std::string &desc) {
+void StartScene::addQuitMenu() {
+    CCMenuItemImage *btn = CCMenuItemImage::create(
+                                    "CloseNormal.png","CloseSelected.png",
+                                    this,
+                                    menu_selector(StartScene::quitGame));
+    btn->ignoreAnchorPointForPosition(true);
+    btn->setPosition(CocosWindow::origin());
+    CCMenu *menu = CCMenu::create(btn, nullptr);
+    menu->setPosition(CocosWindow::origin());
+    addChild(menu, 1);
+}
+
+
+
+TestItem * TestItem::create(const std::string &pic, const std::string &desc, 
+                            float width, float height) {
     TestItem *self = new TestItem();
-    if (self && self->initWithStrings(pic, desc)) {
+    if (self && self->initWithStrings(pic, desc, width, height)) {
+        // notice: don't forget autorelease again.
+        self->autorelease();
         return self;
     }
     return nullptr;
 }
 
-bool TestItem::initWithStrings(const std::string & pic, const std::string & desc) {
+bool TestItem::initWithStrings(const std::string & pic, const std::string & desc, 
+                               float width, float height) {
     
     if (!CCNode::init()) return false;
+
+    if (pic.empty() && desc.empty()) return false;
 
     float sizeX(0), sizeY(0);
     
     if (!pic.empty()) {
         CCSprite *icon = CCSprite::create(pic.c_str());
         if (icon) {
-            sizeX += icon->getContentSize().width;
-            sizeY += icon->getContentSize().height;
+            icon->setAnchorPoint(CCPointZero);
+            auto oriSize = icon->getContentSize();
+            icon->setScaleX(width / 3 / oriSize.width);
+            icon->setScaleY(height / oriSize.height);
+            icon->setPosition(CCPoint(0, 0));
+            CocosUtil::markCorners(icon, 3);
             addChild(icon);
+        }
+        else {
+            return false;
         }
     }
     if (!desc.empty()) {
-        CCLabelTTF *label = CCLabelTTF::create(desc.c_str(), "arial.ttf", 20);
+        CCLabelTTF *label = CCLabelTTF::create(desc.c_str(), "arial.ttf", 30);
         if (label) {
-            label->setPosition(CCPoint(sizeX + 10, sizeY / 2));
+            auto size = label->getContentSize();
+            label->setPosition(CCPoint(width * 2 / 3, height/2));
+            CocosUtil::markCorners(label, 2);
+            //CocosUtil::markPositionWithDot(label, CCPoint(label->getContentSize().width/2, label->getContentSize().height/2), 2);
             addChild(label);
-            sizeX += label->getContentSize().width;
-            if (sizeY == 0) {
-                sizeY += label->getContentSize().height;
-            }
+        }
+        else {
+            return false;
         }
     }
-    setContentSize(CCSize(sizeX, sizeY));
+    auto colorLayer = CCLayerColor::create(CocosUtil::randomC4b(0), width, height);
+    addChild(colorLayer);
+    setContentSize(CCSize(width, height));
     return true;
+}
+
+//---------------------- touch events ----------------------
+bool StartScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+    return false;
+}
+
+void StartScene::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+
+}
+
+void StartScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+
 }
