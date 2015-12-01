@@ -13,6 +13,12 @@
     <Filter Include="Classes\include">
       <UniqueIdentifier>{551f09ba-2661-40d5-9402-1aba08d1dd35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\layers">
+      <UniqueIdentifier>{ed6779c6-cec0-4947-964c-3aa49c8bc533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\customs">
+      <UniqueIdentifier>{8aae07df-4539-46ba-b8ae-9c0b89c1bd46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,6 +35,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StartScene.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\layers\TestEntranceLayer.cpp">
+      <Filter>Classes\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\customs\FlowLayout.cpp">
+      <Filter>Classes\customs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StartScene.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\layers\TestEntranceLayer.h">
+      <Filter>Classes\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\customs\FlowLayout.h">
+      <Filter>Classes\customs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

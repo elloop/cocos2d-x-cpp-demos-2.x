@@ -22,6 +22,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setViewName("CppDemos");
+<<<<<<< HEAD
     eglView->setFrameSize(480, 320);
     int ret = CCApplication::sharedApplication()->run();
 
@@ -29,4 +30,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     CocosUtil::closeLog();
 #endif
     return ret;
+=======
+    eglView->setFrameSize(800, 600);
+    return CCApplication::sharedApplication()->run();
+>>>>>>> 97ad4af8e7e47ef92d25008273311d42bd95bc03
 }
