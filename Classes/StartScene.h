@@ -8,6 +8,20 @@ public:
     TestItem(){}
     static TestItem * create(const std::string &pic, const std::string &desc, 
                              float width, float height);
+    class TouchDetectLayer : public cocos2d::CCLayerColor {
+    public:
+        static TouchDetectLayer *create(const cocos2d::ccColor4B &c4b, 
+            GLfloat width, GLfloat height);
+        bool initWithColor(const cocos2d::ccColor4B &c4b,
+            GLfloat width, GLfloat height);
+
+        // touch events.
+        bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+        void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+        void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    protected:
+        TouchDetectLayer() {}
+    };
 private:
     CREATE_FUNC(TestItem);
     bool initWithStrings(const std::string & pic, const std::string & desc, 
@@ -22,11 +36,6 @@ public:
     void addTestScene();
     void addTestData();
     void StartScene::quitGame(cocos2d::CCObject* obj);
-
-    // touch events.
-    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
-    void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
-    void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
 
 protected:
     StartScene() {}

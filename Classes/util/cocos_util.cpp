@@ -1,13 +1,15 @@
 #include "util/cocos_util.h"
 #include <cassert>
-<<<<<<< HEAD
 #include <fstream>
-=======
 #include <ctime>
->>>>>>> 97ad4af8e7e47ef92d25008273311d42bd95bc03
 USING_NS_CC;
 
-void CocosUtil::markPositionWithDot(cocos2d::CCNode *parent, cocos2d::CCPoint pos, float radius /*= 10*/, cocos2d::ccColor4F color4f /*= cocos2d::ccc4f(1.f, 0.f, 0.f, 1.f)*/) {
+void CocosUtil::markPositionWithDot(
+    cocos2d::CCNode *parent, 
+    cocos2d::CCPoint pos, 
+    float radius /*= 10*/, 
+    cocos2d::ccColor4F color4f /*= cocos2d::ccc4f(1.f, 0.f, 0.f, 1.f)*/) {
+
     assert(parent);
     CCDrawNode *node = CCDrawNode::create();
     parent->addChild(node);
@@ -16,7 +18,6 @@ void CocosUtil::markPositionWithDot(cocos2d::CCNode *parent, cocos2d::CCPoint po
     CCLOG("mark pos: (%.2f, %.2f)\n", pos.x, pos.y);
 }
 
-<<<<<<< HEAD
 void CocosUtil::log(const char *format, ...) {
     const int LOG_MAX_LENGTH = 16384;
     char msg[LOG_MAX_LENGTH];
@@ -24,9 +25,10 @@ void CocosUtil::log(const char *format, ...) {
     va_start(args, format);
     vsnprintf_s(msg, LOG_MAX_LENGTH, LOG_MAX_LENGTH, format,  args);
     va_end(args);
+    if (logStream_.is_open()) {
+        logStream_ << msg ;
+    }
 }
-
-#ifdef WIN32
 
 bool CocosUtil::openLog() {
     if (logStream_.is_open()) {
@@ -34,16 +36,6 @@ bool CocosUtil::openLog() {
     }
     logStream_.open(logName_.c_str(), std::ofstream::out);
     return logStream_.is_open();
-=======
-void CocosUtil::log() {
-    //const int MAX_LOG_LENGTH = 16384; // 16k
-    //char msg[MAX_LOG_LENGTH];
-    //va_list args;
-    //va_start(args, format);
-    //vsnprintf_s(msg, MAX_LOG_LENGTH, MAX_LOG_LENGTH, format, args);
-    //va_end(args);
-
-    
 }
 
 void CocosUtil::markCorners(cocos2d::CCNode *parent, float radius/*=5*/) {
@@ -73,7 +65,6 @@ cocos2d::ccColor4B CocosUtil::randomC4b(unsigned char alpha /*= 255*/) {
     c4b.b = rand() % 255;
     c4b.a = alpha;
     return c4b;
->>>>>>> 97ad4af8e7e47ef92d25008273311d42bd95bc03
 }
 
 void CocosUtil::closeLog() {
@@ -84,4 +75,4 @@ void CocosUtil::closeLog() {
 std::ofstream CocosUtil::logStream_;
 
 std::string CocosUtil::logName_("game.log");
-#endif
+

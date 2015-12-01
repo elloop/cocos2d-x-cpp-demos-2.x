@@ -39,7 +39,8 @@ void StartScene::addTestScene() {
     // scrollviewµÄcontainer
     CCNode *container = CCNode::create();
     for (auto iter : testSet_) {
-        TestItem * item = TestItem::create(iter->iconPic_, iter->description_, cellWidth, cellHeight);
+        TestItem * item = TestItem::create(iter->iconPic_, iter->description_, 
+                                           cellWidth, cellHeight);
         //CocosUtil::markCorners(item);
         item->setPosition(CCPoint(0, height));
         container->addChild(item);
@@ -138,21 +139,53 @@ bool TestItem::initWithStrings(const std::string & pic, const std::string & desc
             return false;
         }
     }
-    auto colorLayer = CCLayerColor::create(CocosUtil::randomC4b(0), width, height);
-    addChild(colorLayer);
+    auto touchLayer = TouchDetectLayer::create(CocosUtil::randomC4b(100), width, height);
+    touchLayer->setTouchEnabled(true);
+    touchLayer->setTouchMode(kCCTouchesOneByOne);
+    addChild(touchLayer);
     setContentSize(CCSize(width, height));
     return true;
 }
 
 //---------------------- touch events ----------------------
-bool StartScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+bool TestItem::TouchDetectLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+    CCLOG("touch: (%.2f, %.2f)\n", pTouch->getLocation().x, pTouch->getLocation().y);
+    auto parent = this->getParent();
+    if ( parent ) {
+        parent->setScale(1.2);
+        //auto scaleBy = CCScaleBy::create(0.2, 1.2);
+        //auto scaleBack = CCScaleTo::create(0.2, 1);
+        //parent_->runAction(CCSequence::create(scaleBy, scaleBack, nullptr));
+    }
+    return true;
+}
+
+void TestItem::TouchDetectLayer::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+
+}
+
+void TestItem::TouchDetectLayer::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+    auto parent = this->getParent();
+    if ( parent ) {
+        parent->setScale(1);
+    }
+}
+
+TestItem::TouchDetectLayer * TestItem::TouchDetectLayer::create(const cocos2d::ccColor4B &c4b, 
+    GLfloat width, GLfloat height) {
+    auto self = new TouchDetectLayer();
+    if (self && self->initWithColor(c4b, width, height)) {
+        self->autorelease();
+        return self;
+    }
+    return nullptr;
+}
+
+bool TestItem::TouchDetectLayer::initWithColor(const cocos2d::ccColor4B &c4b, 
+    GLfloat width, GLfloat height) {
+    if (CCLayerColor::initWithColor(c4b, width, height)) {
+        return true;
+    }
     return false;
 }
 
-void StartScene::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-
-}
-
-void StartScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-
-}
