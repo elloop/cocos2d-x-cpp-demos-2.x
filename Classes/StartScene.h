@@ -19,6 +19,7 @@ public:
         bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
         void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
         void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+        cocos2d::CCRect rect() const ;
     protected:
         TouchDetectLayer() {}
     };

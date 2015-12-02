@@ -149,13 +149,16 @@ bool TestItem::initWithStrings(const std::string & pic, const std::string & desc
 
 //---------------------- touch events ----------------------
 bool TestItem::TouchDetectLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-    CCLOG("touch: (%.2f, %.2f)\n", pTouch->getLocation().x, pTouch->getLocation().y);
-    auto parent = this->getParent();
-    if ( parent ) {
-        parent->setScale(1.2);
-        //auto scaleBy = CCScaleBy::create(0.2, 1.2);
-        //auto scaleBack = CCScaleTo::create(0.2, 1);
-        //parent_->runAction(CCSequence::create(scaleBy, scaleBack, nullptr));
+    auto pos = convertToNodeSpace(pTouch->getLocation());
+    if (rect().containsPoint(pos)) {
+        CCLOG("touch: (%.2f, %.2f)\n", pos.x, pos.y);
+        auto parent = this->getParent();
+        if ( parent ) {
+            parent->setScale(1.2);
+            auto scaleBy = CCScaleBy::create(0.2, 1.2);
+            auto scaleBack = CCScaleTo::create(0.2, 1);
+            parent->runAction(CCSequence::create(scaleBy, scaleBack, nullptr));
+        }
     }
     return true;
 }
@@ -165,10 +168,10 @@ void TestItem::TouchDetectLayer::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d:
 }
 
 void TestItem::TouchDetectLayer::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-    auto parent = this->getParent();
+    /*auto parent = this->getParent();
     if ( parent ) {
         parent->setScale(1);
-    }
+    }*/
 }
 
 TestItem::TouchDetectLayer * TestItem::TouchDetectLayer::create(const cocos2d::ccColor4B &c4b, 
@@ -187,5 +190,9 @@ bool TestItem::TouchDetectLayer::initWithColor(const cocos2d::ccColor4B &c4b,
         return true;
     }
     return false;
+}
+
+cocos2d::CCRect TestItem::TouchDetectLayer::rect() const {
+    return CCRect(0, 0, m_obContentSize.width, m_obContentSize.height);
 }
 
