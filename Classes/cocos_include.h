@@ -3,6 +3,7 @@
 
 #include "util/cocos_util.h"
 #include "util/CocosWindow.h"
+#include "util/Singleton.h"
 
 #define NS_BEGIN(x) namespace x {
 #define NS_END(x) }

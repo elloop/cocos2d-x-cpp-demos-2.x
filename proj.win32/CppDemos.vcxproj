@@ -133,7 +133,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\customs\FlowLayout.cpp" />
+    <ClCompile Include="..\Classes\layers\MainScene.cpp" />
+    <ClCompile Include="..\Classes\layers\SuperPage.cpp" />
     <ClCompile Include="..\Classes\layers\TestEntranceLayer.cpp" />
+    <ClCompile Include="..\Classes\LogicDirector.cpp" />
+    <ClCompile Include="..\Classes\PageManager.cpp" />
     <ClCompile Include="..\Classes\StartScene.cpp" />
     <ClCompile Include="..\Classes\util\CocosWindow.cpp" />
     <ClCompile Include="..\Classes\util\cocos_util.cpp" />
@@ -143,10 +147,16 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\cocos_include.h" />
     <ClInclude Include="..\Classes\customs\FlowLayout.h" />
+    <ClInclude Include="..\Classes\layers\MainScene.h" />
+    <ClInclude Include="..\Classes\layers\SuperPage.h" />
     <ClInclude Include="..\Classes\layers\TestEntranceLayer.h" />
+    <ClInclude Include="..\Classes\LogicDirector.h" />
+    <ClInclude Include="..\Classes\PageManager.h" />
     <ClInclude Include="..\Classes\StartScene.h" />
     <ClInclude Include="..\Classes\util\CocosWindow.h" />
     <ClInclude Include="..\Classes\util\cocos_util.h" />
+    <ClInclude Include="..\Classes\util\Singleton.h" />
+    <ClInclude Include="..\Classes\util\StateMachine.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

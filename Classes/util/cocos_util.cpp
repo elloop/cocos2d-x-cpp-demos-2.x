@@ -34,7 +34,7 @@ bool CocosUtil::openLog() {
     if (logStream_.is_open()) {
         return true;
     }
-    logStream_.open(logName_.c_str(), std::ofstream::out);
+    logStream_.open(logName_.c_str(), std::ofstream::app);
     return logStream_.is_open();
 }
 

@@ -42,6 +42,16 @@
     <ClCompile Include="..\Classes\customs\FlowLayout.cpp">
       <Filter>Classes\customs</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\layers\MainScene.cpp">
+      <Filter>Classes\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LogicDirector.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\layers\SuperPage.cpp">
+      <Filter>Classes\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PageManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -67,6 +77,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\customs\FlowLayout.h">
       <Filter>Classes\customs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\layers\MainScene.h">
+      <Filter>Classes\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LogicDirector.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\util\StateMachine.h">
+      <Filter>Classes\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\layers\SuperPage.h">
+      <Filter>Classes\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PageManager.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\util\Singleton.h">
+      <Filter>Classes\util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

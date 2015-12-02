@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "StartScene.h"
+#include "LogicDirector.h"
 #include "util/cocos_util.h"
 
 USING_NS_CC;
@@ -29,12 +29,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     CocosUtil::openLog();
 
-    CCScene * pScene = CCScene::create();
-    StartScene * layer = StartScene::create();
-    pScene->addChild(layer);
+    LogicDirector::getInstance()->begin();
 
-    // run
-    pDirector->runWithScene(pScene);
 
     return true;
 }
