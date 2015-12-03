@@ -19,6 +19,9 @@
     <Filter Include="Classes\customs">
       <UniqueIdentifier>{8aae07df-4539-46ba-b8ae-9c0b89c1bd46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\message">
+      <UniqueIdentifier>{e4cd9ffd-85fd-424c-9c3a-9e73767b6a20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -52,6 +55,10 @@
       <Filter>Classes\layers</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PageManager.cpp" />
+    <ClCompile Include="..\Classes\message\MessageCenter.cpp">
+      <Filter>Classes\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\message\Message.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -95,6 +102,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\util\Singleton.h">
       <Filter>Classes\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\MessageCenter.h">
+      <Filter>Classes\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\Message.h">
+      <Filter>Classes\message</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

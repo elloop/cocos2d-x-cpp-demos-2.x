@@ -29,6 +29,9 @@ void LogicDirector::begin() {
     }
     mainScene_->addChild(mainPage);
     CCDirector::sharedDirector()->runWithScene(mainScene_);
+    MsgChangePage msg;
+    msg.pageName = "MenuPage";
+    MessageCenter::sendMessage(msg);
 }
 
 LogicDirector::~LogicDirector() {

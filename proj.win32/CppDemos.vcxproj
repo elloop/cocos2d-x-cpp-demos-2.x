@@ -137,6 +137,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\layers\SuperPage.cpp" />
     <ClCompile Include="..\Classes\layers\TestEntranceLayer.cpp" />
     <ClCompile Include="..\Classes\LogicDirector.cpp" />
+    <ClCompile Include="..\Classes\message\Message.cpp" />
+    <ClCompile Include="..\Classes\message\MessageCenter.cpp" />
     <ClCompile Include="..\Classes\PageManager.cpp" />
     <ClCompile Include="..\Classes\StartScene.cpp" />
     <ClCompile Include="..\Classes\util\CocosWindow.cpp" />
@@ -151,6 +153,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\layers\SuperPage.h" />
     <ClInclude Include="..\Classes\layers\TestEntranceLayer.h" />
     <ClInclude Include="..\Classes\LogicDirector.h" />
+    <ClInclude Include="..\Classes\message\Message.h" />
+    <ClInclude Include="..\Classes\message\MessageCenter.h" />
     <ClInclude Include="..\Classes\PageManager.h" />
     <ClInclude Include="..\Classes\StartScene.h" />
     <ClInclude Include="..\Classes\util\CocosWindow.h" />

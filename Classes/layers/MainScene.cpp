@@ -50,7 +50,6 @@ void MainScene::addQuitButton() {
         "CloseNormal.png", "CloseSelected.png",
         this,
         menu_selector(MainScene::quitGame));
-    CocosUtil::markCorners(btn);
     btn->ignoreAnchorPointForPosition(true);
     btn->setPosition(CocosWindow::origin());
     CCMenu *menu = CCMenu::create(btn, nullptr);
