@@ -1,6 +1,8 @@
 #include "LogicDirector.h"
 #include "PageManager.h"
-#include "layers/MainScene.h"
+#include "pages/MainScene.h"
+#include "message/Message.h"
+#include "message/MessageCenter.h"
 
 USING_NS_CC;
 
@@ -30,8 +32,8 @@ void LogicDirector::begin() {
     mainScene_->addChild(mainPage);
     CCDirector::sharedDirector()->runWithScene(mainScene_);
     MsgChangePage msg;
-    msg.pageName = "MenuPage";
-    MessageCenter::sendMessage(msg);
+    msg.pageName_ = "MenuPage";
+    MessageCenter::getInstance()->sendMessage(&msg);
 }
 
 LogicDirector::~LogicDirector() {
@@ -52,6 +54,7 @@ void LogicDirector::purge() {
         stateMachine_->currentState()->onExitState();
     }
     PageManager::getInstance()->purge();
+    MessageCenter::getInstance()->purge();
     Singleton<LogicDirector>::purge();
 }
 

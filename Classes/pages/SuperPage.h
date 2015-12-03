@@ -5,6 +5,8 @@
 #include <string>
 #include <unordered_map>
 
+#define ADD_CHILD(var_name) addChild((var_name), #var_name)
+
 class SuperPage : public cocos2d::CCLayer {
 public:
 

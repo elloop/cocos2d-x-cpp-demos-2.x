@@ -2,6 +2,9 @@
 #define CPP_DEMO_START_SCENE_H
 #include "cocos2d.h"
 #include <string>
+#include "cocos_include.h"
+
+NS_BEGIN(experimental);
 
 class TestItem : public cocos2d::CCNode {
 public:
@@ -56,6 +59,8 @@ private:
     typedef std::vector<TestDataItem*> TestSet;
     TestSet     testSet_;
 };
+
+NS_END(experimental);
 
 #endif
 

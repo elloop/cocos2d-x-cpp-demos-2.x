@@ -1,4 +1,4 @@
-#include "layers/TestEntranceLayer.h"
+#include "pages/TestEntranceLayer.h"
 USING_NS_CC;
 
 bool TestEntranceLayer::init() {

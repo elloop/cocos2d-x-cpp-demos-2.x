@@ -1,5 +1,6 @@
-#include "layers/SuperPage.h"
+#include "pages/SuperPage.h"
 #include "cocos_include.h"
+
 
 void SuperPage::bindChildWithName(CCNode *child, const std::string &name) {
     auto iter = childMap_.find(name);

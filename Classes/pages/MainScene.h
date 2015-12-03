@@ -2,11 +2,16 @@
 #define CPP_DEMO_LAYER_MAINSCENE_H
 
 #include "cocos2d.h"
-#include "layers/SuperPage.h"
+#include "pages/SuperPage.h"
 #include "util/StateMachine.h"
 #include "LogicDirector.h"
 
-class MainScene : public SuperPage, public State<LogicDirector> {
+
+
+class PageManager;
+class MainScene : public SuperPage, public State<LogicDirector>
+{
+    friend PageManager;
 public:
     CREATE_FUNC(MainScene);
 
@@ -24,9 +29,12 @@ protected:
     void quitGame(cocos2d::CCObject *sender);
 
 private:
-    cocos2d::CCLayer    *backLayer_;
-    cocos2d::CCLayer    *middleLayer_;
-    cocos2d::CCLayer    *frontLayer_;
+    cocos2d::CCLayer        *backLayer_;
+    cocos2d::CCLayer        *middleLayer_;
+    cocos2d::CCLayer        *frontLayer_;
+    StateMachine<MainScene> *stateMachine_;
 };
+
+MainScene* mainScene();
 
 #endif

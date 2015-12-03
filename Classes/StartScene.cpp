@@ -1,9 +1,10 @@
 #include "StartScene.h"
-#include "cocos_include.h"
 #include "GUI/CCScrollView/CCScrollView.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
+
+NS_BEGIN(experimental);
 
 bool StartScene::init() {
     if (CCLayer::init()) {
@@ -196,3 +197,4 @@ cocos2d::CCRect TestItem::TouchDetectLayer::rect() const {
     return CCRect(0, 0, m_obContentSize.width, m_obContentSize.height);
 }
 
+NS_END(experimental);
