@@ -46,15 +46,14 @@ void MainScene::onEnterState()
 {
     loadUI();
     stateMachine_ = new StateMachine<MainScene>();
-    auto menuPage = PageManager::getInstance()->getPage<MenuPage>("MenuPage");
-    if (menuPage) {
-        stateMachine_->changeState(menuPage);
-    }
 }
 
 void MainScene::onExecuteState()
 {
-
+    if (stateMachine_) 
+    {
+        stateMachine_->update();
+    }
 }
 
 void MainScene::onExitState()

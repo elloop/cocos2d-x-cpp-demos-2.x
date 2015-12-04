@@ -20,6 +20,7 @@ public:
         MessageHandler *handler,
         int priority = 0);
 
+    void update(float dt);
 protected:
     MessageCenter();
     ~MessageCenter();

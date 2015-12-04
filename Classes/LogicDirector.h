@@ -5,12 +5,13 @@
 #include "util/StateMachine.h"
 #include "cocos_include.h"
 
-class LogicDirector : public Singleton<LogicDirector> {
+class LogicDirector : cocos2d::CCObject, public Singleton<LogicDirector> {
     friend Singleton<LogicDirector>;
 
 public:
     void begin();
-    void purge() override;
+    void destroyInstance() override;
+    void update(float dt) override;
 
 protected:
     LogicDirector();

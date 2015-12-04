@@ -47,7 +47,8 @@ void PageManager::init()
 {
     registerPage("MainScene", mainScene());
     registerPage("MenuPage", MenuPage::create());
-    MessageCenter::getInstance()->regi
+    MessageCenter::getInstance()->registerHanlder(
+        MessageType::kMessageTypeChangePage, this, -1);
 }
 
 void PageManager::onMessageReceived(const Message *msg)

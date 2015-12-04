@@ -8,7 +8,7 @@ void SuperPage::bindChildWithName(CCNode *child, const std::string &name) {
         childMap_.insert({name, child});
     }
     else {
-        CocosUtil::log("warning: repeated child name : %d\n", name.c_str());
+        CocosUtil::log("warning: repeated child name : %s\n", name.c_str());
         iter->second = child;
     }
 }

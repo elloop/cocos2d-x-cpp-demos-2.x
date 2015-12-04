@@ -68,7 +68,10 @@ public:
         return priority_;
     }
 
-    bool less(const PriorityHandler &other) const;
+    inline bool operator < (const PriorityHandler &other) const 
+    {
+        return (priority_ < other.priority_);
+    }
 protected:
     bool initWithHandler(MessageHandler *handler, int priority);
 
@@ -80,9 +83,10 @@ private:
 template <>
 class std::less<PriorityHandler*>
 {
-    bool operator () (const PriorityHandler *p1, const PriorityHandler *p2)
+public:
+    bool operator () (const PriorityHandler *p1, const PriorityHandler *p2) const
     {
-        return (p1->less(*p2));
+        return ((*p1) < (*p2));
     }
 };
 

@@ -1,0 +1,35 @@
+{
+    "items":
+    [
+        {
+            "icon" : "DemoIcon/bow.jpg",
+            "description": "SpriteTest",
+            "page": "SpriteTestPage"
+        },
+        {
+            "icon" : "DemoIcon/superman.jpg",
+            "description": "MenuTest",
+            "page": "MenuTestPage"
+        },
+        {
+            "icon" : "DemoIcon/fight.jpg",
+            "description": "AnimationTest",
+            "page": "AnimationTestPage"
+        },
+        {
+            "icon" : "DemoIcon/man-red-hair.jpg",
+            "description": "LabelTest",
+            "page": "LabelTestPage"
+        },
+        {
+            "icon" : "DemoIcon/automan.jpg",
+            "description": "AudioTest",
+            "page": "AudioTestPage"
+        },
+        {
+            "icon" : "DemoIcon/moto.jpg",
+            "description": "TiledMapTest",
+            "page": "TiledMapTestPage"
+        }
+    ]
+}

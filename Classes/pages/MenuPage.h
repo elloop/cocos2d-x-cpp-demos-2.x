@@ -10,15 +10,14 @@
 class TestItem : public cocos2d::CCNode
 {
 public:
-    TestItem() {}
+    TestItem(int id) : itemId_(id) {}
 
-    static TestItem * create(const std::string &pic, const std::string &desc,
-        float width, float height);
+    static TestItem * create(int id, float width, float height);
 
+    void onItemSelected(cocos2d::CCObject *target);
 private:
-    CREATE_FUNC(TestItem);
-    bool initWithStrings(const std::string & pic, const std::string & desc,
-        float width, float height);
+    bool initWithSize(float width, float height);
+    int     itemId_;
 };
 
 class MenuPage : public SuperPage, public State<MainScene>
@@ -33,26 +32,13 @@ public:
     void onExecuteState() override;
     void onExitState() override;
 
-    void purgeTestData();
-    void addTestScene();
-    void addTestData();
-
 protected:
     MenuPage();
     ~MenuPage();
 
 private:
-    class TestDataItem
-    {
-    public:
-        TestDataItem(std::string iconPic, std::string description) :
-            iconPic_(iconPic), description_(description)
-        {}
-        std::string     iconPic_;
-        std::string     description_;
-    };
-    typedef std::vector<TestDataItem*> TestSet;
-    TestSet     testSet_;
+    
+   
 };
 
 #endif

@@ -3,22 +3,25 @@
 #include "pages/MainScene.h"
 #include "message/Message.h"
 #include "message/MessageCenter.h"
+#include "data_models/TestDataCenter.h"
 
 USING_NS_CC;
 
-void globalClearFunction() {
-    LogicDirector::getInstance()->purge();
+void globalClearFunction()
+{
+    LogicDirector::getInstance()->destroyInstance();
 }
 
-LogicDirector::LogicDirector() 
-    : mainScene_(nullptr)
+LogicDirector::LogicDirector()
+: mainScene_(nullptr)
 {
 
 }
 
-
-void LogicDirector::begin() {
-    if (mainScene_) {
+void LogicDirector::begin()
+{
+    if (mainScene_)
+    {
         return;
     }
     init();
@@ -26,7 +29,8 @@ void LogicDirector::begin() {
     mainScene_ = CCScene::create();
     mainScene_->retain();
     auto mainPage = PageManager::getInstance()->getPage<MainScene>("MainScene");
-    if (mainPage) {
+    if (mainPage)
+    {
         stateMachine_->changeState(mainPage);
     }
     mainScene_->addChild(mainPage);
@@ -36,26 +40,45 @@ void LogicDirector::begin() {
     MessageCenter::getInstance()->sendMessage(&msg);
 }
 
-LogicDirector::~LogicDirector() {
+LogicDirector::~LogicDirector()
+{
     CC_SAFE_DELETE(stateMachine_);
     CC_SAFE_RELEASE(mainScene_);
 }
 
-void LogicDirector::init() {
-    
+void LogicDirector::init()
+{
+
     // global clear function will be called when director->end().
     CCDirector::sharedDirector()->setClearFunction(globalClearFunction);
 
+    TestDataCenter::getInstance()->init("TestConfig.json");
+
     PageManager::getInstance()->init();
+
+    auto scheduler = CCDirector::sharedDirector()->getScheduler();
+    scheduler->scheduleUpdateForTarget(this, 0, false);
 }
 
-void LogicDirector::purge() {
-    if (stateMachine_ && stateMachine_->currentState()) {
+void LogicDirector::destroyInstance()
+{
+    if (stateMachine_ && stateMachine_->currentState())
+    {
         stateMachine_->currentState()->onExitState();
     }
-    PageManager::getInstance()->purge();
-    MessageCenter::getInstance()->purge();
-    Singleton<LogicDirector>::purge();
+    PageManager::getInstance()->destroyInstance();
+    MessageCenter::getInstance()->destroyInstance();
+    TestDataCenter::getInstance()->destroyInstance();
+    Singleton<LogicDirector>::destroyInstance();
+}
+
+void LogicDirector::update(float dt)
+{
+    MessageCenter::getInstance()->update(dt);
+    if (stateMachine_) 
+    {
+        stateMachine_->update();
+    }
 }
 
 

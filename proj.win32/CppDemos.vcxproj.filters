@@ -22,6 +22,12 @@
     <Filter Include="Classes\pages">
       <UniqueIdentifier>{ed6779c6-cec0-4947-964c-3aa49c8bc533}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\data_models">
+      <UniqueIdentifier>{a3011aff-e155-4bad-bdb8-8bc4878dc5ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\rapid_json">
+      <UniqueIdentifier>{767472f1-3ba5-4dd4-8d28-2f6c29a74034}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,9 +56,6 @@
       <Filter>Classes\message</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\message\Message.cpp" />
-    <ClCompile Include="..\Classes\message\MessageHandler.cpp">
-      <Filter>Classes\message</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\pages\MainScene.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
@@ -64,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\pages\MenuPage.cpp">
       <Filter>Classes\pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\data_models\TestDataCenter.cpp">
+      <Filter>Classes\data_models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,9 +112,6 @@
     <ClInclude Include="..\Classes\message\Message.h">
       <Filter>Classes\message</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\message\MessageHandler.h">
-      <Filter>Classes\message</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\pages\MainScene.h">
       <Filter>Classes\pages</Filter>
     </ClInclude>
@@ -123,6 +126,96 @@
     </ClInclude>
     <ClInclude Include="..\Classes\include_pages.h">
       <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\data_models\TestDataCenter.h">
+      <Filter>Classes\data_models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\allocators.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\document.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\encodedstream.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\encodings.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\filereadstream.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\filewritestream.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\memorybuffer.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\memorystream.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\pointer.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\prettywriter.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\rapidjson.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\reader.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\stringbuffer.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\writer.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\msinttypes\inttypes.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\msinttypes\stdint.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\biginteger.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\diyfp.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\dtoa.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\ieee754.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\itoa.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\meta.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\pow10.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\stack.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\strfunc.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\strtod.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\internal\swap.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\error\en.h">
+      <Filter>Classes\rapid_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\rapid_json\error\error.h">
+      <Filter>Classes\rapid_json</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

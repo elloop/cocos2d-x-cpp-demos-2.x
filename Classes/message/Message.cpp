@@ -18,7 +18,3 @@ bool PriorityHandler::initWithHandler(MessageHandler *handler, int priority)
     return true;
 }
 
-bool PriorityHandler::less(const PriorityHandler &other) const
-{
-    return (priority_ < other.priority_);
-}

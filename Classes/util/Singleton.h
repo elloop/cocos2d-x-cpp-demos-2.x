@@ -2,7 +2,8 @@
 #define CPP_DEMO_UTIL_NONCOPYABLE_H
 
 template <typename T>
-class Singleton {
+class Singleton
+{
 public:
     Singleton(Singleton &other) = delete;
     Singleton& operator= (Singleton &other) = delete;
@@ -14,8 +15,10 @@ protected:
     Singleton() {}
     virtual ~Singleton() {}
 
-    virtual void purge() {
-        if (instance_) {
+    virtual void destroyInstance()
+    {
+        if (instance_)
+        {
             delete instance_;
             instance_ = nullptr;
         }
@@ -29,8 +32,10 @@ template <typename T>
 T * Singleton<T>::instance_ = nullptr;
 
 template <typename T>
-inline T* Singleton<T>::getInstance() {
-    if (!instance_) {
+inline T* Singleton<T>::getInstance()
+{
+    if (!instance_)
+    {
         instance_ = new T();
     }
     return instance_;
