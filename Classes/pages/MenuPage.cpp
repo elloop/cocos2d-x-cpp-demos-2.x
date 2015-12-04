@@ -1,6 +1,8 @@
 #include "pages/MenuPage.h"
 #include "GUI/CCScrollView/CCScrollView.h"
 #include "data_models/TestDataCenter.h"
+#include "message/Message.h"
+#include "message/MessageCenter.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -47,6 +49,8 @@ void MenuPage::loadUI()
 void MenuPage::onEnterState()
 {
     loadUI();
+    MsgChangeBackground msg("DemoIcon/grass.jpg");
+    MessageCenter::getInstance()->sendMessage(&msg);
 }
 
 void MenuPage::onExecuteState()
