@@ -51,6 +51,7 @@ void MenuPage::onEnterState()
     loadUI();
     MsgChangeBackground msg("DemoIcon/grass.jpg");
     MessageCenter::getInstance()->sendMessage(&msg);
+    MessageCenter::getInstance()->registerHanlder(MessageType::kMessageTypeChangePage, this);
 }
 
 void MenuPage::onExecuteState()
@@ -61,6 +62,12 @@ void MenuPage::onExecuteState()
 void MenuPage::onExitState()
 {
     unloadUI();
+}
+
+void MenuPage::onMessageReceived(const Message *msg)
+{
+    int i;
+    i = 1;
 }
 
 TestItem * TestItem::create(int id, float width, float height)

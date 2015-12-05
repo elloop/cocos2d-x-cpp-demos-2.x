@@ -6,6 +6,7 @@
 #include "pages/MainScene.h"
 #include "util/StateMachine.h"
 #include "LogicDirector.h"
+#include "message/Message.h"
 
 class TestItem : public cocos2d::CCNode
 {
@@ -20,7 +21,7 @@ private:
     int     itemId_;
 };
 
-class MenuPage : public SuperPage, public State<MainScene>
+class MenuPage : public SuperPage, public State<MainScene>, public MessageHandler
 {
 public:
     CREATE_FUNC(MenuPage);
@@ -31,6 +32,8 @@ public:
     void onEnterState() override;
     void onExecuteState() override;
     void onExitState() override;
+
+    void onMessageReceived(const Message *msg) override;
 
 protected:
     MenuPage();

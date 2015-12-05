@@ -113,6 +113,7 @@ void PageManager::changeBackGround(const std::string &pic)
         auto winSize = CocosWindow::size();
         background->setScaleX(winSize.width / size.width);
         background->setScaleY(winSize.height / size.height);
+        background->setPosition(CocosWindow::center());
         backLlayer->addChild(background);
     }
 }

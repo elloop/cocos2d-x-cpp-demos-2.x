@@ -34,20 +34,28 @@ void MessageCenter::dispatchMessage()
 {
     if (messages_.empty()) return;
 
-    for (auto &msg : messages_) 
+    // make a snapshot of messages_, 
+    // and new messages during this dispatchMessage()'s calling 
+    // will be added and be dispatched in next frame loop
+    MessageQueue msgInThisFrame;
+    msgInThisFrame.swap(messages_);
+
+    for (auto &msg : msgInThisFrame) 
     {
         auto handlerQ = handlerMap_.find(msg->type());
         if (handlerQ != handlerMap_.end()) 
         {
-            for (auto handler : handlerQ->second) 
+            // use a snapshot of handlerQueue, and new handlers will be notified in next dispacth.
+            auto handlerSnapshot = handlerQ->second;
+            for (auto & handler : handlerSnapshot) 
             {
                 handler->handler()->onMessageReceived(msg);
             }
         }
         CC_SAFE_DELETE(msg);
     }
-    messages_.clear();
-    MessageQueue().swap(messages_);
+    msgInThisFrame.clear();
+    MessageQueue().swap(msgInThisFrame);
 }
 
 void MessageCenter::registerHanlder(
@@ -66,7 +74,10 @@ void MessageCenter::registerHanlder(
     }
     else
     {
-        auto q = iter->second;
+        // FATAL ERROR: container in stl is copy-in copy-out
+        // auto q = iter->second, q is only a copy of iter->second, not a ref!!
+        //auto q = iter->second;
+        auto &q = iter->second;
         for (auto h : q) 
         {
             if (h->handler() == handler) 
