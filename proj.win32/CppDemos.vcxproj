@@ -138,10 +138,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\message\Message.cpp" />
     <ClCompile Include="..\Classes\message\MessageCenter.cpp" />
     <ClCompile Include="..\Classes\PageManager.cpp" />
-    <ClCompile Include="..\Classes\pages\MainScene.cpp" />
-    <ClCompile Include="..\Classes\pages\MenuPage.cpp" />
+    <ClCompile Include="..\Classes\pages\RootPage.cpp" />
+    <ClCompile Include="..\Classes\pages\MainPage.cpp" />
     <ClCompile Include="..\Classes\pages\SuperPage.cpp" />
     <ClCompile Include="..\Classes\pages\TestEntranceLayer.cpp" />
+    <ClCompile Include="..\Classes\pages\TouchTestPage.cpp" />
     <ClCompile Include="..\Classes\StartScene.cpp" />
     <ClCompile Include="..\Classes\util\CocosWindow.cpp" />
     <ClCompile Include="..\Classes\util\cocos_util.cpp" />
@@ -157,10 +158,11 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\message\Message.h" />
     <ClInclude Include="..\Classes\message\MessageCenter.h" />
     <ClInclude Include="..\Classes\PageManager.h" />
-    <ClInclude Include="..\Classes\pages\MainScene.h" />
-    <ClInclude Include="..\Classes\pages\MenuPage.h" />
+    <ClInclude Include="..\Classes\pages\RootPage.h" />
+    <ClInclude Include="..\Classes\pages\MainPage.h" />
     <ClInclude Include="..\Classes\pages\SuperPage.h" />
     <ClInclude Include="..\Classes\pages\TestEntranceLayer.h" />
+    <ClInclude Include="..\Classes\pages\TouchTestPage.h" />
     <ClInclude Include="..\Classes\rapid_json\allocators.h" />
     <ClInclude Include="..\Classes\rapid_json\document.h" />
     <ClInclude Include="..\Classes\rapid_json\encodedstream.h" />

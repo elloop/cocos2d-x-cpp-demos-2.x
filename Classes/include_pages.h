@@ -1,2 +1,2 @@
-#include "pages/MainScene.h"
-#include "pages/MenuPage.h"
+#include "pages/RootPage.h"
+#include "pages/MainPage.h"

@@ -1,6 +1,6 @@
 #include "LogicDirector.h"
 #include "PageManager.h"
-#include "pages/MainScene.h"
+#include "pages/RootPage.h"
 #include "message/Message.h"
 #include "message/MessageCenter.h"
 #include "data_models/TestDataCenter.h"
@@ -28,15 +28,14 @@ void LogicDirector::begin()
     stateMachine_ = new StateMachine<LogicDirector>();
     mainScene_ = CCScene::create();
     mainScene_->retain();
-    auto mainPage = PageManager::getInstance()->getPage<MainScene>("MainScene");
-    if (mainPage)
+    auto rootPage = PageManager::getInstance()->getPage<RootPage>("RootPage");
+    if (rootPage)
     {
-        stateMachine_->changeState(mainPage);
+        stateMachine_->changeState(rootPage);
     }
-    mainScene_->addChild(mainPage);
+    mainScene_->addChild(rootPage);
     CCDirector::sharedDirector()->runWithScene(mainScene_);
-    MsgChangePage msg;
-    msg.pageName_ = "MenuPage";
+    MsgChangePage msg("MainPage");
     MessageCenter::getInstance()->sendMessage(&msg);
 }
 

@@ -11,7 +11,7 @@
 
 class SuperPage;
 class LogicDirector;
-class MainScene;
+class RootPage;
 
 class PageManager : public Singleton<PageManager>, public MessageHandler 
 {
@@ -21,7 +21,7 @@ class PageManager : public Singleton<PageManager>, public MessageHandler
 
 public:
     void        init();
-    void        registerPage(const std::string &name, SuperPage *page);
+    bool        registerPage(const std::string &name, SuperPage *page);
     void        removePage(const std::string &name);
 
     
@@ -47,7 +47,7 @@ private:
     typedef std::unordered_map<std::string, SuperPage*> PageMap;
     PageMap                     pages_;
     std::string                 currentPageName_;
-    StateMachine<MainScene>     *&stateMachineRef_;
+    StateMachine<RootPage>     *&stateMachineRef_;
 };
 
 template <typename T = SuperPage>

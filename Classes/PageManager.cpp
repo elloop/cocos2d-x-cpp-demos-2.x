@@ -4,7 +4,7 @@
 #include "message/MessageCenter.h"
 USING_NS_CC;
 
-PageManager::PageManager() : stateMachineRef_(mainScene()->stateMachine_)
+PageManager::PageManager() : stateMachineRef_(rootPage()->stateMachine_)
 {}
 
 PageManager::~PageManager()
@@ -18,7 +18,7 @@ PageManager::~PageManager()
     pages_.clear();
 }
 
-void PageManager::registerPage(const std::string &name, SuperPage *page)
+bool PageManager::registerPage(const std::string &name, SuperPage *page)
 {
     auto iter = pages_.find(name);
     if ( iter != pages_.end() )
@@ -32,6 +32,7 @@ void PageManager::registerPage(const std::string &name, SuperPage *page)
         page->retain();
         pages_.insert({ name, page });
     }
+    return true;
 }
 
 void PageManager::removePage(const std::string &name)
@@ -46,8 +47,8 @@ void PageManager::removePage(const std::string &name)
 
 void PageManager::init()
 {
-    registerPage("MainScene", mainScene());
-    registerPage("MenuPage", MenuPage::create());
+    registerPage("RootPage", rootPage());
+    registerPage("MainPage", MainPage::create());
     MessageCenter::getInstance()->registerHanlder(
         MessageType::kMessageTypeChangePage, this, -1);
     MessageCenter::getInstance()->registerHanlder(
@@ -73,7 +74,7 @@ void PageManager::onMessageReceived(const Message *msg)
     }
     else if ( MessageType::kMessageTypeChangeBackground == mType )
     {
-        auto realMsg = dynamic_cast<const MsgChangeBackground*>(msg);
+        auto realMsg = dynamic_cast<const MsgChangeBackground*>( msg );
         CCAssert(realMsg, "");
         changeBackGround(realMsg->backgroundPic_);
     }
@@ -83,19 +84,19 @@ void PageManager::changePage(const std::string &pageName)
 {
     // close last page.
     auto page = getPage(pageName);
-    if ( !page )
+    if ( pageName == currentPageName_ || !page )
     {
         return;
     }
-
-    auto newState = dynamic_cast<State<MainScene>*>( page );
+    currentPageName_ = pageName;
+    auto newState = dynamic_cast<State<RootPage>*>( page );
     if ( stateMachineRef_ )
     {
         stateMachineRef_->changeState(newState);
     }
 
     // add page as child of MainScene's middle layer
-    auto middleLayer = mainScene()->middleLayer_;
+    auto middleLayer = rootPage()->middleLayer_;
     if ( middleLayer )
     {
         middleLayer->removeAllChildren();
@@ -105,8 +106,9 @@ void PageManager::changePage(const std::string &pageName)
 
 void PageManager::changeBackGround(const std::string &pic)
 {
-    auto backLlayer = mainScene()->backLayer_;
-    if (backLlayer) {
+    auto backLlayer = rootPage()->backLayer_;
+    if ( backLlayer )
+    {
         backLlayer->removeAllChildren();
         auto background = CCSprite::create(pic.c_str());
         auto size = background->getContentSize();

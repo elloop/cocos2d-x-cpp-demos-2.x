@@ -3,8 +3,8 @@
     [
         {
             "icon" : "DemoIcon/bow.jpg",
-            "description": "SpriteTest",
-            "page": "SpriteTestPage"
+            "description": "TouchTest",
+            "page": "TouchTestPage"
         },
         {
             "icon" : "DemoIcon/superman.jpg",

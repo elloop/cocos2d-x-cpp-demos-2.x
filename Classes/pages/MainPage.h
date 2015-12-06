@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "pages/SuperPage.h"
-#include "pages/MainScene.h"
+#include "pages/RootPage.h"
 #include "util/StateMachine.h"
 #include "LogicDirector.h"
 #include "message/Message.h"
@@ -21,10 +21,10 @@ private:
     int     itemId_;
 };
 
-class MenuPage : public SuperPage, public State<MainScene>, public MessageHandler
+class MainPage : public SuperPage, public State<RootPage>, public MessageHandler
 {
 public:
-    CREATE_FUNC(MenuPage);
+    CREATE_FUNC(MainPage);
 
     void loadUI() override;
     void unloadUI() override { removeAllChildren(); }
@@ -36,8 +36,8 @@ public:
     void onMessageReceived(const Message *msg) override;
 
 protected:
-    MenuPage();
-    ~MenuPage();
+    MainPage();
+    ~MainPage();
 
 private:
     

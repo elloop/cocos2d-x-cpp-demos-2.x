@@ -1,4 +1,4 @@
-#include "pages/MenuPage.h"
+#include "pages/MainPage.h"
 #include "GUI/CCScrollView/CCScrollView.h"
 #include "data_models/TestDataCenter.h"
 #include "message/Message.h"
@@ -7,15 +7,15 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-MenuPage::MenuPage()
+MainPage::MainPage()
 {
 }
 
-MenuPage::~MenuPage()
+MainPage::~MainPage()
 {
 }
 
-void MenuPage::loadUI()
+void MainPage::loadUI()
 {
     float height(0);
 
@@ -46,7 +46,7 @@ void MenuPage::loadUI()
     ADD_CHILD(scroll);
 }
 
-void MenuPage::onEnterState()
+void MainPage::onEnterState()
 {
     loadUI();
     MsgChangeBackground msg("DemoIcon/grass.jpg");
@@ -54,17 +54,17 @@ void MenuPage::onEnterState()
     MessageCenter::getInstance()->registerHanlder(MessageType::kMessageTypeChangePage, this);
 }
 
-void MenuPage::onExecuteState()
+void MainPage::onExecuteState()
 {
 
 }
 
-void MenuPage::onExitState()
+void MainPage::onExitState()
 {
     unloadUI();
 }
 
-void MenuPage::onMessageReceived(const Message *msg)
+void MainPage::onMessageReceived(const Message *msg)
 {
     int i;
     i = 1;
@@ -122,8 +122,9 @@ bool TestItem::initWithSize(float width, float height)
 void TestItem::onItemSelected(cocos2d::CCObject *target)
 {
     auto t = dynamic_cast<CCMenuItemLabel*>(target);
-    int tag = t->getTag();
-    auto data = TestDataCenter::getInstance()->getTestDataItemByIndex(tag);
-    CCLOG("%s is clicked, goto page: %s\n", data->description_.c_str(), data->pageName_.c_str());
+    CCAssert(t, "");
+    auto data = TestDataCenter::getInstance()->getTestDataItemByIndex(t->getTag());
+    MsgChangePage msg(data->pageName_);
+    MessageCenter::getInstance()->sendMessage(&msg);
 }
 

@@ -1,19 +1,17 @@
-#ifndef CPP_DEMO_LAYER_MAINSCENE_H
-#define CPP_DEMO_LAYER_MAINSCENE_H
+#ifndef CPP_DEMO_LAYER_ROOTPAGE_H
+#define CPP_DEMO_LAYER_ROOTPAGE_H
 
 #include "cocos2d.h"
 #include "pages/SuperPage.h"
 #include "util/StateMachine.h"
 #include "LogicDirector.h"
 
-
-
 class PageManager;
-class MainScene : public SuperPage, public State<LogicDirector>
+class RootPage : public SuperPage, public State<LogicDirector>
 {
     friend PageManager;
 public:
-    CREATE_FUNC(MainScene);
+    CREATE_FUNC(RootPage);
 
     void loadUI() override;
     void unloadUI() override { removeAllChildrenWithCleanup(true); }
@@ -23,18 +21,19 @@ public:
     void onExitState() override;
 
 protected:
-    MainScene();
-    ~MainScene();
-    void addQuitButton();
+    RootPage();
+    ~RootPage();
+    void addMenuButtons();
     void quitGame(cocos2d::CCObject *sender);
+    void goHome(cocos2d::CCObject *sender);
 
 private:
     cocos2d::CCLayer        *backLayer_;
     cocos2d::CCLayer        *middleLayer_;
     cocos2d::CCLayer        *frontLayer_;
-    StateMachine<MainScene> *stateMachine_;
+    StateMachine<RootPage>  *stateMachine_;
 };
 
-MainScene* mainScene();
+RootPage* rootPage();
 
 #endif
