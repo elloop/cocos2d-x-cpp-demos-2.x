@@ -146,6 +146,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\StartScene.cpp" />
     <ClCompile Include="..\Classes\util\CocosWindow.cpp" />
     <ClCompile Include="..\Classes\util\cocos_util.cpp" />
+    <ClCompile Include="..\Classes\util\StringUtil.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +198,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\util\cocos_util.h" />
     <ClInclude Include="..\Classes\util\Singleton.h" />
     <ClInclude Include="..\Classes\util\StateMachine.h" />
+    <ClInclude Include="..\Classes\util\StringUtil.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

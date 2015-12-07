@@ -24,21 +24,21 @@ public:
     template <typename T>
     T* getChild(const std::string &name);
 
-    void addChild(CCNode * child, const std::string &name);
-    void addChild(CCNode * child, int zOrder, const std::string &name);
-    void addChild(CCNode* child, int zOrder, int tag, const std::string &name);
+    void addChild(cocos2d::CCNode * child, const std::string &name);
+    void addChild(cocos2d::CCNode * child, int zOrder, const std::string &name);
+    void addChild(cocos2d::CCNode* child, int zOrder, int tag, const std::string &name);
 
-    void addChildRaw(CCNode * child);
-    void addChildRaw(CCNode * child, int zOrder);
-    void addChildRaw(CCNode* child, int zOrder, int tag);
+    void addChildRaw(cocos2d::CCNode * child);
+    void addChildRaw(cocos2d::CCNode * child, int zOrder);
+    void addChildRaw(cocos2d::CCNode* child, int zOrder, int tag);
 
 private:
     // hide super's public methods. 
-    virtual void addChild(CCNode * child) override;
-    virtual void addChild(CCNode * child, int zOrder) override;
-    virtual void addChild(CCNode* child, int zOrder, int tag) override;
+    virtual void addChild(cocos2d::CCNode * child) override;
+    virtual void addChild(cocos2d::CCNode * child, int zOrder) override;
+    virtual void addChild(cocos2d::CCNode* child, int zOrder, int tag) override;
 
-    void bindChildWithName(CCNode *child, const std::string &name);
+    void bindChildWithName(cocos2d::CCNode *child, const std::string &name);
 
 protected:
     SuperPage();

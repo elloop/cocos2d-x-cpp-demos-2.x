@@ -13,6 +13,8 @@ public:
 
     static bool openLog();
     static void closeLog();
+
+    // mark four corners for a rectangle shape parent.
     static void markCorners(cocos2d::CCNode *parent, float radius = 5);
     static cocos2d::ccColor4F randomC4f(float alpah = 1.0);
     static cocos2d::ccColor4B randomC4b(unsigned char alpha = 255);
