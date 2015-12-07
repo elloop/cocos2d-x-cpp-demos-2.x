@@ -2,7 +2,8 @@
 #include "PageManager.h"
 USING_NS_CC;
 
-bool touchTestPageRegistered =  PageManager::getInstance()->registerPage("TouchTestPage", TouchTestPage::create());
+bool touchTestPageRegistered =  PageManager::getInstance()->registerPage(
+111"TouchTestPage", TouchTestPage::create());
 
 void TouchTestPage::loadUI()
 {

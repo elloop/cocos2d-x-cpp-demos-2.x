@@ -15,7 +15,7 @@ stateMachine_(nullptr)
 
 RootPage::~RootPage()
 {
-    if (stateMachine_ && stateMachine_->currentState()) 
+    if ( stateMachine_ && stateMachine_->currentState() )
     {
         stateMachine_->currentState()->onExitState();
     }
@@ -52,7 +52,7 @@ void RootPage::onEnterState()
 
 void RootPage::onExecuteState()
 {
-    if (stateMachine_) 
+    if ( stateMachine_ )
     {
         stateMachine_->update();
     }
@@ -66,15 +66,16 @@ void RootPage::onExitState()
 void RootPage::addMenuButtons()
 {
     auto winSize = CocosWindow::size();
-    auto origin = CocosWindow::origin(); 
-    
+    auto origin = CocosWindow::origin();
+
     CCMenuItemImage *quitBtn = CCMenuItemImage::create(
         "CloseNormal.png", "CloseSelected.png",
         this,
         menu_selector(RootPage::quitGame));
     quitBtn->ignoreAnchorPointForPosition(true);
     auto btnSize = quitBtn->getContentSize();
-    quitBtn->setPosition(origin + CCPoint(winSize.width - btnSize.width, winSize.height - btnSize.height));
+    quitBtn->setPosition(origin + CCPoint(winSize.width - btnSize.width,
+        winSize.height - btnSize.height));
 
     CCMenuItemImage *homeBtn = CCMenuItemImage::create(
         "DemoIcon/home.png", "DemoIcon/home.png",

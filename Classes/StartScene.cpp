@@ -6,8 +6,10 @@ USING_NS_CC_EXT;
 
 NS_BEGIN(experimental);
 
-bool StartScene::init() {
-    if (CCLayer::init()) {
+bool StartScene::init()
+{
+    if ( CCLayer::init() )
+    {
         addQuitMenu();
         addTestData();
         addTestScene();
@@ -17,18 +19,20 @@ bool StartScene::init() {
     return false;
 }
 
-void StartScene::quitGame(CCObject* obj) {
+void StartScene::quitGame(CCObject* obj)
+{
     CCDirector::sharedDirector()->end();
 }
 
-void StartScene::addTestScene() {
+void StartScene::addTestScene()
+{
     /*using elloop::FlowLayout;
     FlowLayout * flow = FlowLayout::create(
-        "DemoIcon/bow.jpg",
-        "DemoIcon/bow.jpg",
-        "DemoIcon/bow.jpg",
-        "DemoIcon/bow.jpg",
-        nullptr);*/
+    "DemoIcon/bow.jpg",
+    "DemoIcon/bow.jpg",
+    "DemoIcon/bow.jpg",
+    "DemoIcon/bow.jpg",
+    nullptr);*/
     float height(0);
     float maxWidth(0), maxHeight(0);
 
@@ -39,8 +43,9 @@ void StartScene::addTestScene() {
 
     // scrollviewµÄcontainer
     CCNode *container = CCNode::create();
-    for (auto iter : testSet_) {
-        TestItem * item = TestItem::create(iter->iconPic_, iter->description_, 
+    for ( auto iter : testSet_ )
+    {
+        TestItem * item = TestItem::create(iter->iconPic_, iter->description_,
                                            cellWidth, cellHeight);
         //CocosUtil::markCorners(item);
         item->setPosition(CCPoint(0, height));
@@ -51,14 +56,15 @@ void StartScene::addTestScene() {
 
     auto scroll = CCScrollView::create();
     scroll->setContainer(container);
-    scroll->setPosition(CocosWindow::center() - CCPoint(winSize/2));
+    scroll->setPosition(CocosWindow::center() - CCPoint(winSize / 2));
     scroll->setViewSize(winSize);
     CocosUtil::markCorners(scroll);
     addChild(scroll);
     auto of = scroll->getContentOffset();
 }
 
-void StartScene::addTestData() {
+void StartScene::addTestData()
+{
     testSet_.push_back(new TestDataItem("DemoIcon/bow.jpg", "SpriteTest"));
     testSet_.push_back(new TestDataItem("DemoIcon/superman.jpg", "MenuTest"));
     testSet_.push_back(new TestDataItem("DemoIcon/fight.jpg", "AnimationTest"));
@@ -67,22 +73,26 @@ void StartScene::addTestData() {
     testSet_.push_back(new TestDataItem("DemoIcon/moto.jpg", "TiledMapTest"));
 }
 
-StartScene::~StartScene() {
+StartScene::~StartScene()
+{
     purgeTestData();
 }
 
-void StartScene::purgeTestData() {
-    for (auto &iter : testSet_) {
+void StartScene::purgeTestData()
+{
+    for ( auto &iter : testSet_ )
+    {
         CC_SAFE_DELETE(iter);
     }
     TestSet().swap(testSet_);
 }
 
-void StartScene::addQuitMenu() {
+void StartScene::addQuitMenu()
+{
     CCMenuItemImage *btn = CCMenuItemImage::create(
-                                    "CloseNormal.png","CloseSelected.png",
-                                    this,
-                                    menu_selector(StartScene::quitGame));
+        "CloseNormal.png", "CloseSelected.png",
+        this,
+        menu_selector(StartScene::quitGame));
     btn->ignoreAnchorPointForPosition(true);
     btn->setPosition(CocosWindow::origin());
     CCMenu *menu = CCMenu::create(btn, nullptr);
@@ -92,10 +102,12 @@ void StartScene::addQuitMenu() {
 
 
 
-TestItem * TestItem::create(const std::string &pic, const std::string &desc, 
-                            float width, float height) {
+TestItem * TestItem::create(const std::string &pic, const std::string &desc,
+                            float width, float height)
+{
     TestItem *self = new TestItem();
-    if (self && self->initWithStrings(pic, desc, width, height)) {
+    if ( self && self->initWithStrings(pic, desc, width, height) )
+    {
         // notice: don't forget autorelease again.
         self->autorelease();
         return self;
@@ -103,18 +115,21 @@ TestItem * TestItem::create(const std::string &pic, const std::string &desc,
     return nullptr;
 }
 
-bool TestItem::initWithStrings(const std::string & pic, const std::string & desc, 
-                               float width, float height) {
-    
-    if (!CCNode::init()) return false;
+bool TestItem::initWithStrings(const std::string & pic, const std::string & desc,
+                               float width, float height)
+{
 
-    if (pic.empty() && desc.empty()) return false;
+    if ( !CCNode::init() ) return false;
+
+    if ( pic.empty() && desc.empty() ) return false;
 
     float sizeX(0), sizeY(0);
-    
-    if (!pic.empty()) {
+
+    if ( !pic.empty() )
+    {
         CCSprite *icon = CCSprite::create(pic.c_str());
-        if (icon) {
+        if ( icon )
+        {
             icon->setAnchorPoint(CCPointZero);
             auto oriSize = icon->getContentSize();
             icon->setScaleX(width / 3 / oriSize.width);
@@ -123,24 +138,28 @@ bool TestItem::initWithStrings(const std::string & pic, const std::string & desc
             CocosUtil::markCorners(icon, 3);
             addChild(icon);
         }
-        else {
+        else
+        {
             return false;
         }
     }
-    if (!desc.empty()) {
+    if ( !desc.empty() )
+    {
         CCLabelTTF *label = CCLabelTTF::create(desc.c_str(), "arial.ttf", 30);
-        if (label) {
+        if ( label )
+        {
             auto size = label->getContentSize();
-            label->setPosition(CCPoint(width * 2 / 3, height/2));
+            label->setPosition(CCPoint(width * 2 / 3, height / 2));
             CocosUtil::markCorners(label, 2);
-            //CocosUtil::markPositionWithDot(label, CCPoint(label->getContentSize().width/2, label->getContentSize().height/2), 2);
             addChild(label);
         }
-        else {
+        else
+        {
             return false;
         }
     }
-    auto touchLayer = TouchDetectLayer::create(CocosUtil::randomC4b(100), width, height);
+    auto touchLayer = TouchDetectLayer::create(CocosUtil::randomC4b(100), width, 
+                                               height);
     touchLayer->setTouchEnabled(true);
     touchLayer->setTouchMode(kCCTouchesOneByOne);
     addChild(touchLayer);
@@ -149,12 +168,16 @@ bool TestItem::initWithStrings(const std::string & pic, const std::string & desc
 }
 
 //---------------------- touch events ----------------------
-bool TestItem::TouchDetectLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+bool TestItem::TouchDetectLayer::ccTouchBegan(cocos2d::CCTouch *pTouch,
+                                              cocos2d::CCEvent *pEvent)
+{
     auto pos = convertToNodeSpace(pTouch->getLocation());
-    if (rect().containsPoint(pos)) {
+    if ( rect().containsPoint(pos) )
+    {
         CCLOG("touch: (%.2f, %.2f)\n", pos.x, pos.y);
         auto parent = this->getParent();
-        if ( parent ) {
+        if ( parent )
+        {
             parent->setScale(1.2);
             auto scaleBy = CCScaleBy::create(0.2, 1.2);
             auto scaleBack = CCScaleTo::create(0.2, 1);
@@ -164,36 +187,46 @@ bool TestItem::TouchDetectLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d:
     return true;
 }
 
-void TestItem::TouchDetectLayer::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+void TestItem::TouchDetectLayer::ccTouchMoved(cocos2d::CCTouch *pTouch,
+                                              cocos2d::CCEvent *pEvent)
+{
 
 }
 
-void TestItem::TouchDetectLayer::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+void TestItem::TouchDetectLayer::ccTouchEnded(cocos2d::CCTouch *pTouch,
+                                              cocos2d::CCEvent *pEvent)
+{
     /*auto parent = this->getParent();
     if ( parent ) {
-        parent->setScale(1);
+    parent->setScale(1);
     }*/
 }
 
-TestItem::TouchDetectLayer * TestItem::TouchDetectLayer::create(const cocos2d::ccColor4B &c4b, 
-    GLfloat width, GLfloat height) {
+TestItem::TouchDetectLayer * TestItem::TouchDetectLayer::create(
+    const cocos2d::ccColor4B &c4b,
+    GLfloat width, GLfloat height)
+{
     auto self = new TouchDetectLayer();
-    if (self && self->initWithColor(c4b, width, height)) {
+    if ( self && self->initWithColor(c4b, width, height) )
+    {
         self->autorelease();
         return self;
     }
     return nullptr;
 }
 
-bool TestItem::TouchDetectLayer::initWithColor(const cocos2d::ccColor4B &c4b, 
-    GLfloat width, GLfloat height) {
-    if (CCLayerColor::initWithColor(c4b, width, height)) {
+bool TestItem::TouchDetectLayer::initWithColor(const cocos2d::ccColor4B &c4b,
+                                               GLfloat width, GLfloat height)
+{
+    if ( CCLayerColor::initWithColor(c4b, width, height) )
+    {
         return true;
     }
     return false;
 }
 
-cocos2d::CCRect TestItem::TouchDetectLayer::rect() const {
+cocos2d::CCRect TestItem::TouchDetectLayer::rect() const
+{
     return CCRect(0, 0, m_obContentSize.width, m_obContentSize.height);
 }
 

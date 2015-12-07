@@ -51,7 +51,8 @@ void MainPage::onEnterState()
     loadUI();
     MsgChangeBackground msg("DemoIcon/grass.jpg");
     MessageCenter::getInstance()->sendMessage(&msg);
-    MessageCenter::getInstance()->registerHanlder(MessageType::kMessageTypeChangePage, this);
+    MessageCenter::getInstance()->registerHanlder(
+        MessageType::kMessageTypeChangePage, this);
 }
 
 void MainPage::onExecuteState()

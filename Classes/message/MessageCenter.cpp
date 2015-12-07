@@ -45,7 +45,8 @@ void MessageCenter::dispatchMessage()
         auto handlerQ = handlerMap_.find(msg->type());
         if (handlerQ != handlerMap_.end()) 
         {
-            // use a snapshot of handlerQueue, and new handlers will be notified in next dispacth.
+            // use a snapshot of handlerQueue, and new handlers will be notified 
+            // in next dispacth.
             auto handlerSnapshot = handlerQ->second;
             for (auto & handler : handlerSnapshot) 
             {
