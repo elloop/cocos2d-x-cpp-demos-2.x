@@ -19,7 +19,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setViewName("CppDemos");
-    eglView->setFrameSize(900, 600);
+    eglView->setFrameSize(480, 320);
     int ret = CCApplication::sharedApplication()->run();
 
     CocosUtil::log("game end\n");

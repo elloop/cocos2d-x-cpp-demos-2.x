@@ -78,7 +78,7 @@ void RootPage::addMenuButtons()
         winSize.height - btnSize.height));
 
     CCMenuItemImage *homeBtn = CCMenuItemImage::create(
-        "DemoIcon/home.png", "DemoIcon/home.png",
+        "DemoIcon/home_small.png", "DemoIcon/home_small.png",
         this,
         menu_selector(RootPage::goHome));
     homeBtn->ignoreAnchorPointForPosition(true);
