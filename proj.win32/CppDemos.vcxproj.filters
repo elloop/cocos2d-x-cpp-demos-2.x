@@ -77,6 +77,9 @@
     <ClCompile Include="..\Classes\util\StringUtil.cpp">
       <Filter>Classes\util</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\pages\LittleTouchPage.cpp">
+      <Filter>Classes\pages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -228,6 +231,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\util\StringUtil.h">
       <Filter>Classes\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pages\LittleTouchPage.h">
+      <Filter>Classes\pages</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
