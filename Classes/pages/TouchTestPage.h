@@ -27,6 +27,9 @@ public:
     virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+
+    // menu item callback
+    void menuCallback(cocos2d::CCObject * target);
 protected:
     TouchTestPage();
     ~TouchTestPage();

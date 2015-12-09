@@ -133,6 +133,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\customs\FlowLayout.cpp" />
+    <ClCompile Include="..\Classes\customs\Menu.cpp" />
     <ClCompile Include="..\Classes\data_models\TestDataCenter.cpp" />
     <ClCompile Include="..\Classes\LogicDirector.cpp" />
     <ClCompile Include="..\Classes\message\Message.cpp" />
@@ -154,6 +155,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\cocos_include.h" />
     <ClInclude Include="..\Classes\customs\FlowLayout.h" />
+    <ClInclude Include="..\Classes\customs\Menu.h" />
     <ClInclude Include="..\Classes\data_models\TestDataCenter.h" />
     <ClInclude Include="..\Classes\include_pages.h" />
     <ClInclude Include="..\Classes\LogicDirector.h" />

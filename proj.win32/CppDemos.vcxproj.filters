@@ -80,6 +80,9 @@
     <ClCompile Include="..\Classes\pages\LittleTouchPage.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\customs\Menu.cpp">
+      <Filter>Classes\customs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -234,6 +237,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\pages\LittleTouchPage.h">
       <Filter>Classes\pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\customs\Menu.h">
+      <Filter>Classes\customs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

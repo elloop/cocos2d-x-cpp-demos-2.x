@@ -1,6 +1,7 @@
 #include "pages/TouchTestPage.h"
 #include "PageManager.h"
 #include "util/StringUtil.h"
+#include "customs/Menu.h"
 
 USING_NS_CC;
 
@@ -42,6 +43,16 @@ void TouchTestPage::loadUI()
     touchDispatcher->addTargetedDelegate(getChild<Dog>("dog1"), -1, true);
     touchDispatcher->addTargetedDelegate(getChild<Dog>("dog2"), 0, true);
     touchDispatcher->addTargetedDelegate(getChild<Dog>("dog3"), 0, true);
+
+    // test Custom Menu
+
+    auto menuItemImage = CCMenuItemImage::create(
+        "DemoIcon/home_small.png", "DemoIcon/home_small.png",
+        this,menu_selector(TouchTestPage::menuCallback));
+
+    using elloop::Menu;
+    Menu *menu = Menu::create(menuItemImage, nullptr);
+    ADD_CHILD(menu);
 }
 
 void TouchTestPage::unloadUI()
@@ -122,6 +133,11 @@ void TouchTestPage::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEv
 void TouchTestPage::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     isTouchingColorLayer_ = false;
+}
+
+void TouchTestPage::menuCallback(cocos2d::CCObject * target)
+{
+    CCMessageBox("HouseMenuClcked", "TouchTestPage");
 }
 
 //----------------------------------- Dog Imp ---------------------------------
