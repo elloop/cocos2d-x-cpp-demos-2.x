@@ -42,6 +42,7 @@ void MainPage::loadUI()
     scroll->setContainer(container);
     scroll->setPosition(CocosWindow::center() - CCPoint(winSize / 2));
     scroll->setViewSize(winSize);
+    scroll->setContentOffset(CCPoint(0, -height + winSize.height));
     CocosUtil::markCorners(scroll);
     ADD_CHILD(scroll);
 }

@@ -46,12 +46,19 @@ void TouchTestPage::loadUI()
 
     // test Custom Menu
 
-    auto menuItemImage = CCMenuItemImage::create(
+    auto menuItemImage1 = CCMenuItemImage::create(
         "DemoIcon/home_small.png", "DemoIcon/home_small.png",
         this,menu_selector(TouchTestPage::menuCallback));
 
+    auto menuItemImage2 = CCMenuItemImage::create(
+        "DemoIcon/home_small.png", "DemoIcon/home_small.png",
+        this, menu_selector(TouchTestPage::menuCallback));
+
+    menuItemImage2->setPosition(CCPoint(menuItemImage1->getContentSize().width, 
+        0));
+
     using elloop::Menu;
-    Menu *menu = Menu::create(menuItemImage, nullptr);
+    Menu *menu = Menu::create(menuItemImage1, menuItemImage2, nullptr);
     ADD_CHILD(menu);
 }
 
@@ -137,7 +144,8 @@ void TouchTestPage::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent 
 
 void TouchTestPage::menuCallback(cocos2d::CCObject * target)
 {
-    CCMessageBox("HouseMenuClcked", "TouchTestPage");
+    //CCMessageBox("HouseMenuClcked", "TouchTestPage");
+    //ScrollMessageBox::
 }
 
 //----------------------------------- Dog Imp ---------------------------------

@@ -142,6 +142,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\pages\LittleTouchPage.cpp" />
     <ClCompile Include="..\Classes\pages\RootPage.cpp" />
     <ClCompile Include="..\Classes\pages\MainPage.cpp" />
+    <ClCompile Include="..\Classes\pages\ScrollviewTestPage.cpp" />
     <ClCompile Include="..\Classes\pages\SuperPage.cpp" />
     <ClCompile Include="..\Classes\pages\TestEntranceLayer.cpp" />
     <ClCompile Include="..\Classes\pages\TouchTestPage.cpp" />
@@ -165,6 +166,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\pages\LittleTouchPage.h" />
     <ClInclude Include="..\Classes\pages\RootPage.h" />
     <ClInclude Include="..\Classes\pages\MainPage.h" />
+    <ClInclude Include="..\Classes\pages\ScrollviewTestPage.h" />
     <ClInclude Include="..\Classes\pages\SuperPage.h" />
     <ClInclude Include="..\Classes\pages\TestEntranceLayer.h" />
     <ClInclude Include="..\Classes\pages\TouchTestPage.h" />

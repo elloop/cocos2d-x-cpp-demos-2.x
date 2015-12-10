@@ -6,6 +6,10 @@
 #include "util/StateMachine.h"
 #include "LogicDirector.h"
 
+namespace extension {
+    class CCScrollView;
+}
+
 class PageManager;
 class RootPage : public SuperPage, public State<LogicDirector>
 {
@@ -32,6 +36,7 @@ private:
     cocos2d::CCLayer        *middleLayer_;
     cocos2d::CCLayer        *frontLayer_;
     StateMachine<RootPage>  *stateMachine_;
+    extension::CCScrollView *scrollView_;
 };
 
 RootPage* rootPage();

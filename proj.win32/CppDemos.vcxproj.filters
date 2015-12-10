@@ -56,9 +56,6 @@
       <Filter>Classes\message</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\message\Message.cpp" />
-    <ClCompile Include="..\Classes\pages\SuperPage.cpp">
-      <Filter>Classes\pages</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\pages\TestEntranceLayer.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
@@ -82,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\customs\Menu.cpp">
       <Filter>Classes\customs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pages\ScrollviewTestPage.cpp">
+      <Filter>Classes\pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pages\SuperPage.cpp">
+      <Filter>Classes\pages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +243,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\customs\Menu.h">
       <Filter>Classes\customs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pages\ScrollviewTestPage.h">
+      <Filter>Classes\pages</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

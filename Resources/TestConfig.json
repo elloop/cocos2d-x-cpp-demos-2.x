@@ -2,11 +2,6 @@
     "items":
     [
         {
-            "icon" : "DemoIcon/bow.jpg",
-            "description": "TouchTest",
-            "page": "TouchTestPage"
-        },
-        {
             "icon" : "DemoIcon/superman.jpg",
             "description": "MenuTest",
             "page": "MenuTestPage"
@@ -30,6 +25,16 @@
             "icon" : "DemoIcon/moto.jpg",
             "description": "TiledMapTest",
             "page": "TiledMapTestPage"
+        },
+		{
+            "icon" : "DemoIcon/bow.jpg",
+            "description": "TouchTest",
+            "page": "TouchTestPage"
+        },
+		{
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "ScrollViewTest",
+            "page": "ScrollviewTestPage"
         }
     ]
 }

@@ -11,7 +11,6 @@
 class TouchTestPage 
     : public SuperPage
     , public State<RootPage>
-    , public cocos2d::CCTouchDelegate
 {
 public:
     CREATE_FUNC(TouchTestPage);

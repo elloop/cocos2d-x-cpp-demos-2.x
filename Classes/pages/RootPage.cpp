@@ -3,8 +3,11 @@
 #include "message/Message.h"
 #include "message/MessageCenter.h"
 #include "pages/MainPage.h"
+#include "customs/Menu.h"
+#include "GUI/CCScrollView/CCScrollView.h"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
 
 RootPage::RootPage() :
 backLayer_(nullptr),
@@ -42,6 +45,7 @@ void RootPage::loadUI()
     frontLayer_->retain();
     frontLayer_->setContentSize(CCSize(200, 200));
     addChildRaw(frontLayer_, 2);
+
 }
 
 void RootPage::onEnterState()
@@ -85,7 +89,8 @@ void RootPage::addMenuButtons()
     btnSize = homeBtn->getContentSize();
     homeBtn->setPosition(origin + CCPoint(0, winSize.height - btnSize.height));
 
-    CCMenu *menu = CCMenu::create(quitBtn, homeBtn, nullptr);
+    using elloop::Menu;
+    Menu *menu = Menu::create(quitBtn, homeBtn, nullptr);
     menu->setPosition(CCPointZero);
     addChildRaw(menu, 3);
 }
@@ -100,7 +105,6 @@ void RootPage::goHome(cocos2d::CCObject *sender)
     MsgChangePage msg("MainPage");
     MessageCenter::getInstance()->sendMessage(&msg);
 }
-
 
 RootPage* rootPage()
 {
