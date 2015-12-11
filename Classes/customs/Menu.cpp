@@ -245,7 +245,7 @@ bool Menu::ccTouchBegan(CCTouch* touch, CCEvent* event)
         m_eState = kMenuStateTrackingTouch;
         m_pSelectedItem->selected();
         itemOriginScale_ = m_pSelectedItem->getScale();
-        m_pSelectedItem->setScale(itemOriginScale_ * 5);
+        m_pSelectedItem->setScale(itemOriginScale_ * 1.2f);
         return true;
     }
     return false;
@@ -295,7 +295,7 @@ void Menu::ccTouchMoved(CCTouch* touch, CCEvent* event)
         {
             m_pSelectedItem->selected();
             itemOriginScale_ = m_pSelectedItem->getScale();
-            m_pSelectedItem->setScale(itemOriginScale_ * 5);
+            m_pSelectedItem->setScale(itemOriginScale_ * 1.2f);
         }
     }
 }

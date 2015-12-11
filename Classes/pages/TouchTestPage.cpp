@@ -45,7 +45,6 @@ void TouchTestPage::loadUI()
     touchDispatcher->addTargetedDelegate(getChild<Dog>("dog3"), 0, true);
 
     // test Custom Menu
-
     auto menuItemImage1 = CCMenuItemImage::create(
         "DemoIcon/home_small.png", "DemoIcon/home_small.png",
         this,menu_selector(TouchTestPage::menuCallback));
@@ -53,13 +52,13 @@ void TouchTestPage::loadUI()
     auto menuItemImage2 = CCMenuItemImage::create(
         "DemoIcon/home_small.png", "DemoIcon/home_small.png",
         this, menu_selector(TouchTestPage::menuCallback));
-
     menuItemImage2->setPosition(CCPoint(menuItemImage1->getContentSize().width, 
         0));
 
     auto label = CCLabelTTF::create("hello", "arial.ttf", 20);
     auto menuItemLabel = CCMenuItemLabel::create(label);
-    menuItemLabel->setPosition(CCPoint(menuItemImage2->getPositionX() + 30, 0));
+    menuItemLabel->setPosition(CCPoint(menuItemImage2->getPositionX() + menuItemImage1->getContentSize().width, 0));
+
     using elloop::Menu;
     Menu *menu = Menu::create(menuItemImage1, menuItemImage2, menuItemLabel, nullptr);
     ADD_CHILD(menu);
