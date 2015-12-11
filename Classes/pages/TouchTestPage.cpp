@@ -57,8 +57,11 @@ void TouchTestPage::loadUI()
     menuItemImage2->setPosition(CCPoint(menuItemImage1->getContentSize().width, 
         0));
 
+    auto label = CCLabelTTF::create("hello", "arial.ttf", 20);
+    auto menuItemLabel = CCMenuItemLabel::create(label);
+    menuItemLabel->setPosition(CCPoint(menuItemImage2->getPositionX() + 30, 0));
     using elloop::Menu;
-    Menu *menu = Menu::create(menuItemImage1, menuItemImage2, nullptr);
+    Menu *menu = Menu::create(menuItemImage1, menuItemImage2, menuItemLabel, nullptr);
     ADD_CHILD(menu);
 }
 
