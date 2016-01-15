@@ -35,6 +35,11 @@
             "icon" : "DemoIcon/scroll1.jpg",
             "description": "ScrollViewTest",
             "page": "ScrollviewTestPage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "SpriteBatchNode",
+            "page": "SpriteBatchNodeTestPage"
         }
     ]
 }
