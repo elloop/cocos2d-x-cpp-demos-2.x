@@ -110,7 +110,18 @@ void PageManager::changeBackGround(const std::string &pic)
     if ( backLlayer )
     {
         backLlayer->removeAllChildren();
+        if ( pic.empty() )
+        {
+            // empty pic name will delete the background.
+            return;
+        }
         auto background = CCSprite::create(pic.c_str());
+        if ( !background )
+        {
+            // invalid pic name will delete the background.
+            return;
+        }
+
         auto size = background->getContentSize();
         auto winSize = CocosWindow::size();
         background->setScaleX(winSize.width / size.width);

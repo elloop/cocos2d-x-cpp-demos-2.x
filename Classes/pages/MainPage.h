@@ -33,8 +33,6 @@ public:
     void onExecuteState() override;
     void onExitState() override;
 
-    void onMessageReceived(const Message *msg) override;
-
 protected:
     MainPage();
     ~MainPage();

@@ -48,7 +48,7 @@ void MessageCenter::dispatchMessage()
             // use a snapshot of handlerQueue, and new handlers will be notified 
             // in next dispacth.
             auto handlerSnapshot = handlerQ->second;
-            for (auto & handler : handlerSnapshot) 
+            for (const auto & handler : handlerSnapshot) 
             {
                 handler->handler()->onMessageReceived(msg);
             }
@@ -79,7 +79,7 @@ void MessageCenter::registerHanlder(
         // auto q = iter->second, q is only a copy of iter->second, not a ref!!
         //auto q = iter->second;
         auto &q = iter->second;
-        for (auto h : q) 
+        for (const auto &h : q) 
         {
             if (h->handler() == handler) 
             {
