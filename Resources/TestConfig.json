@@ -40,6 +40,11 @@
             "icon" : "DemoIcon/scroll1.jpg",
             "description": "SpriteBatchNode",
             "page": "SpriteBatchNodeTestPage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "SpriteFrameTestPage",
+            "page": "SpriteFrameTestPage"
         }
     ]
 }

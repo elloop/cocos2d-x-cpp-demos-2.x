@@ -144,6 +144,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\pages\MainPage.cpp" />
     <ClCompile Include="..\Classes\pages\ScrollviewTestPage.cpp" />
     <ClCompile Include="..\Classes\pages\SpriteBatchNodeTestPage.cpp" />
+    <ClCompile Include="..\Classes\pages\SpriteFrameTestPage.cpp" />
     <ClCompile Include="..\Classes\pages\SuperPage.cpp" />
     <ClCompile Include="..\Classes\pages\TouchTestPage.cpp" />
     <ClCompile Include="..\Classes\StartScene.cpp" />
@@ -168,6 +169,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\pages\MainPage.h" />
     <ClInclude Include="..\Classes\pages\ScrollviewTestPage.h" />
     <ClInclude Include="..\Classes\pages\SpriteBatchNodeTestPage.h" />
+    <ClInclude Include="..\Classes\pages\SpriteFrameTestPage.h" />
     <ClInclude Include="..\Classes\pages\SuperPage.h" />
     <ClInclude Include="..\Classes\pages\TouchTestPage.h" />
     <ClInclude Include="..\Classes\rapid_json\allocators.h" />
