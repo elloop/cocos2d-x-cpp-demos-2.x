@@ -87,6 +87,10 @@
       <Filter>Classes\pages</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\pages\SpriteFrameTestPage.cpp">
+    <ClCompile Include="..\Classes\pages\CustomSpritePage.cpp">
+      <Filter>Classes\pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pages\CustomNodePage.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
   </ItemGroup>
@@ -251,6 +255,10 @@
       <Filter>Classes\pages</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\pages\SpriteFrameTestPage.h">
+    <ClInclude Include="..\Classes\pages\CustomSpritePage.h">
+      <Filter>Classes\pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pages\CustomNodePage.h">
       <Filter>Classes\pages</Filter>
     </ClInclude>
   </ItemGroup>

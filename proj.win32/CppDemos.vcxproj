@@ -139,6 +139,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\message\Message.cpp" />
     <ClCompile Include="..\Classes\message\MessageCenter.cpp" />
     <ClCompile Include="..\Classes\PageManager.cpp" />
+    <ClCompile Include="..\Classes\pages\CustomNodePage.cpp" />
+    <ClCompile Include="..\Classes\pages\CustomSpritePage.cpp" />
     <ClCompile Include="..\Classes\pages\LittleTouchPage.cpp" />
     <ClCompile Include="..\Classes\pages\RootPage.cpp" />
     <ClCompile Include="..\Classes\pages\MainPage.cpp" />
@@ -164,6 +166,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\message\Message.h" />
     <ClInclude Include="..\Classes\message\MessageCenter.h" />
     <ClInclude Include="..\Classes\PageManager.h" />
+    <ClInclude Include="..\Classes\pages\CustomNodePage.h" />
+    <ClInclude Include="..\Classes\pages\CustomSpritePage.h" />
     <ClInclude Include="..\Classes\pages\LittleTouchPage.h" />
     <ClInclude Include="..\Classes\pages\RootPage.h" />
     <ClInclude Include="..\Classes\pages\MainPage.h" />
