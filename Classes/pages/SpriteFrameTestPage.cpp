@@ -44,7 +44,7 @@ void SpriteFrameTestPage::loadUI()
 
    // todo : compare draw calls between batch node and sprite frames.
    // create animation with sprite batch
-   CCSpriteBatchNode * batch = CCSpriteBatchNode::create("animations/grossini.png");
+   /*CCSpriteBatchNode * batch = CCSpriteBatchNode::create("animations/grossini.png");
    CCArray* animFrames = CCArray::createWithCapacity(15);
    char str[100] = { 0 };
    for ( int i = 1; i < 15; i++ )
@@ -54,7 +54,7 @@ void SpriteFrameTestPage::loadUI()
        animFrames->addObject(frame);
    }
    auto animation = CCAnimation::createWithSpriteFrames(animFrames, 0.3);
-   spriteFromFrameCache->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+   spriteFromFrameCache->runAction(CCRepeatForever::create(CCAnimate::create(animation)));*/
 
 
 }
