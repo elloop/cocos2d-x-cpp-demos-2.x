@@ -55,6 +55,11 @@
             "icon" : "DemoIcon/scroll1.jpg",
             "description": "custom node",
             "page": "CustomNodePage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "Blood flash page",
+            "page": "BloodFlashPage"
         }
     ]
 }

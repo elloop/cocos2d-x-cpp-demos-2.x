@@ -1,0 +1,103 @@
+#ifdef GL_ES																		
+precision mediump float;															
+#endif																				
+																					
+varying vec4 v_fragmentColor;														
+varying vec2 v_texCoord;															
+																					
+uniform sampler2D CC_Texture0;
+uniform sampler2D CC_Palette;														
+uniform vec2	  CC_TexSize;
+//uniform int     CC_UseGuassian;
+
+vec4 getCoordColor(vec2 texCoord)													
+{																			
+	//modified by zhenhui. replace 16*16 with 256 *1, see CCTexture2D.cpp																					
+	vec4 alpha_clr = texture2D(CC_Texture0, texCoord);
+	float coord_x = alpha_clr.a;
+	return texture2D(CC_Palette, vec2(coord_x, 0.0));	
+}
+
+vec4 palette_nearest()																			
+{				
+	return getCoordColor(v_texCoord);							
+}
+
+vec4 palette_linear()																			
+{												
+	float x_offset = 0.25;
+	float y_offset = 0.25;													
+	vec2 texCoord = v_texCoord * CC_TexSize;										
+	vec2 l_pos = texCoord + vec2(-x_offset, 0);								
+	vec2 r_pos = texCoord + vec2(x_offset, 0);								
+	l_pos /= CC_TexSize;															
+	r_pos /= CC_TexSize;															
+	return getCoordColor(l_pos) * 0.5 + getCoordColor(r_pos) * 0.5;
+}
+																
+vec4 palette_rect()																			
+{																					
+	float x_offset = 0.25;
+	float y_offset = 0.25;
+	vec2 texCoord = v_texCoord * CC_TexSize;										
+	vec2 lt_pos = texCoord + vec2(-x_offset, -y_offset);							
+	vec2 rt_pos = texCoord + vec2(x_offset, -y_offset);								
+	vec2 lb_pos = texCoord + vec2(-x_offset, y_offset);
+	vec2 rb_pos = texCoord + vec2(x_offset, y_offset);								
+	lb_pos /= CC_TexSize;															
+	lt_pos /= CC_TexSize;															
+	rt_pos /= CC_TexSize;															
+	rb_pos /= CC_TexSize;															
+	return  getCoordColor(lb_pos) * 0.25 + 									
+			getCoordColor(lt_pos) * 0.25 + 									
+			getCoordColor(rt_pos) * 0.25 + 									
+			getCoordColor(rb_pos) * 0.25;			
+}
+
+vec4 palette_gaussian(){
+    //http://en.wikipedia.org/wiki/Gaussian_function
+    //sigma is sqrt(0.2f), too bright for the image.
+    //float weight0 = 1.261;
+    //float weight1 = 0.103;
+    
+    //sigma is sqrt(0.5f)
+    float weight0 = 0.56;
+    float weight1 = 0.34;
+
+    vec4 originalColor = getCoordColor(v_texCoord);
+    float xStep = 0.25/CC_TexSize.x;
+    float leftX = max(0.0,v_texCoord.x-xStep);
+    float rightX = min(1.0,v_texCoord.x+xStep);
+    vec2 leftVec = vec2(leftX,v_texCoord.y);
+    vec2 rightVec = vec2(rightX,v_texCoord.y);
+
+    float yStep = 0.25/CC_TexSize.y;
+    float topY  = max(0.0,v_texCoord.y-yStep);
+    float bottomY  = min(1.0,v_texCoord.y+yStep);
+    vec2 topVec = vec2(v_texCoord.x,topY);
+    vec2 bottomVec = vec2(v_texCoord.x,bottomY);
+
+    vec4 leftColor = getCoordColor(leftVec);
+    vec4 rightColor = getCoordColor(rightVec);
+    vec4 topColor = getCoordColor(topVec);
+    vec4 bottomColor = getCoordColor(bottomVec);
+    
+
+    vec4 finalColor = (originalColor*weight0+leftColor*weight1+rightColor*weight1+topColor*weight1+bottomColor*weight1)/(weight0+weight1*4.0);
+    return finalColor;
+    
+}
+
+
+//vec4 judgeUseGaussianOrNot(){
+//    if(CC_UseGuassian==0){
+//        return palette_nearest();
+//    }else{
+//        return palette_gaussian();
+//    }
+//}
+
+void main()
+{
+    gl_FragColor = v_fragmentColor * palette_rect() ;
+}
