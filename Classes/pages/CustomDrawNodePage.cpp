@@ -1,4 +1,4 @@
-#include "pages/CustomNodePage.h"
+#include "pages/CustomDrawNodePage.h"
 #include "message/MessageCenter.h"
 #include "PageManager.h"
 #include "util/StringUtil.h"
@@ -7,70 +7,88 @@
 USING_NS_CC;
 
 bool customNodePageCreated = PageManager::getInstance()->registerPage(
-    "CustomNodePage", CustomNodePage::create());
+    "CustomDrawNodePage", CustomDrawNodePage::create());
 
-void CustomNodePage::loadUI()
+void CustomDrawNodePage::loadUI()
 {
     setTouchEnabled(true);
     setTouchMode(kCCTouchesOneByOne);
-    //RedNode *rs = RedNode::create("shaders/example_Monjori.vsh", "shaders/example_Monjori.fsh");
-    //RedNode *rs = RedNode::create("Shaders/example_Mandelbrot.vsh", "Shaders/example_Mandelbrot.fsh");
-    //RedNode *rs = RedNode::create("Shaders/example_Julia.vsh", "Shaders/example_Julia.fsh");
-    //RedNode *rs = RedNode::create("Shaders/example_Heart.vsh", "Shaders/example_Heart.fsh");
-    //RedNode *rs = RedNode::create("Shaders/example_Flower.vsh", "Shaders/example_Flower.fsh");
-    //ShaderNode *rs = ShaderNode::create("Shaders/example_Plasma.vsh", "Shaders/example_Plasma.fsh");
-    //rs->setPosition(CocosWindow::center());
-    //ADD_CHILD(rs);
-
-    CustomRectangleNode *rectNode = CustomRectangleNode::create(
-        "shaders/custom_rectangle_vert.glsl", 
-        "shaders/custom_rectangle_frag.glsl");
-
-    ADD_CHILD(rectNode);
-
-
-
+    CCAssert(_testIndex >= 0 && _testIndex < _createFuncs.size(), "wrong index");
+    auto node = _createFuncs[_testIndex]();
+    // do not set position for CustomRectangleNode.
+    if ( nullptr == dynamic_cast<CustomRectangleNode*>( node ) )
+    {
+        node->setPosition(CocosWindow::center());
+    }
+    ADD_CHILD(node);
 }
 
-void CustomNodePage::unloadUI()
+void CustomDrawNodePage::unloadUI()
 {
     removeAllChildren();
 }
 
-void CustomNodePage::onEnterState()
+void CustomDrawNodePage::onEnterState()
 {
+    // remove backgournd picture.
     MsgChangeBackground msg("");
     MessageCenter::getInstance()->sendMessage(&msg);
+
+    // add test cases.
+    _createFuncs.clear();
+    _createFuncs.insert(_createFuncs.begin(), 
+    {
+        std::bind(&ShaderNode::create, "shaders/example_Monjori.vsh", "shaders/example_Monjori.fsh"),
+        std::bind(&ShaderNode::create, "Shaders/example_Mandelbrot.vsh", "Shaders/example_Mandelbrot.fsh"),
+        std::bind(&ShaderNode::create, "Shaders/example_Julia.vsh", "Shaders/example_Julia.fsh"),
+        std::bind(&ShaderNode::create, "Shaders/example_Heart.vsh", "Shaders/example_Heart.fsh"),
+        std::bind(&ShaderNode::create, "Shaders/example_Flower.vsh", "Shaders/example_Flower.fsh"),
+        std::bind(&ShaderNode::create, "Shaders/example_Plasma.vsh", "Shaders/example_Plasma.fsh"),
+        std::bind(&CustomRectangleNode::create, "shaders/custom_rectangle_vert.glsl", "shaders/custom_rectangle_frag.glsl"),
+    });
+
+    loadUI();
+
+    rootPage()->registerTestCallback(
+        std::bind(&CustomDrawNodePage::preTest, this, std::placeholders::_1),
+        std::bind(&CustomDrawNodePage::nextTest, this, std::placeholders::_1)
+        );
+}
+
+void CustomDrawNodePage::onExecuteState()
+{}
+
+void CustomDrawNodePage::onExitState()
+{
+    unloadUI();
+    rootPage()->clearTestCallback();
+}
+
+CustomDrawNodePage::CustomDrawNodePage() : _testIndex(0)
+{}
+
+CustomDrawNodePage::~CustomDrawNodePage()
+{}
+
+void CustomDrawNodePage::nextTest(cocos2d::CCObject* sender)
+{
+    CCAssert(_createFuncs.size() > 0, "empty test set");
+    _testIndex = (_testIndex + 1) % _createFuncs.size();
+
+    removeAllChildren();
     loadUI();
 }
 
-void CustomNodePage::onExecuteState()
-{}
-
-void CustomNodePage::onExitState()
+void CustomDrawNodePage::preTest(cocos2d::CCObject* sender)
 {
-    unloadUI();
+    if ( --_testIndex < 0 )
+    {
+        _testIndex = _createFuncs.size() - 1;
+    }
+
+    removeAllChildren();
+    loadUI();
 }
-
-CustomNodePage::CustomNodePage()
-{}
-
-CustomNodePage::~CustomNodePage()
-{}
-
-bool CustomNodePage::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
-{
-    return false;
-}
-
-void CustomNodePage::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
-{}
-
-void CustomNodePage::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
-{}
-
-void CustomNodePage::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
-{}
 
 ShaderNode* ShaderNode::create(const char *vs, const char *fs)
 {
@@ -111,8 +129,6 @@ bool ShaderNode::initWithShader(const char *vs, const char *fs)
     setAnchorPoint(CCPoint(0.5f, 0.5f));
 
     return true;
-
-
 }
 
 void ShaderNode::draw()

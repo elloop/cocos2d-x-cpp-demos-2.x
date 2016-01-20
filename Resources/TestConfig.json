@@ -53,8 +53,8 @@
         },
         {
             "icon" : "DemoIcon/scroll1.jpg",
-            "description": "custom node",
-            "page": "CustomNodePage"
+            "description": "custom draw node",
+            "page": "CustomDrawNodePage"
         },
         {
             "icon" : "DemoIcon/scroll1.jpg",

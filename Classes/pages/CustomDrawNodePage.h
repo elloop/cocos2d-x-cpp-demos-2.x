@@ -7,13 +7,14 @@
 #include "util/StateMachine.h"
 #include "LogicDirector.h"
 #include "message/Message.h"
+#include <vector>
 
-class CustomNodePage 
+class CustomDrawNodePage 
     : public SuperPage
     , public State<RootPage>
 {
 public:
-    CREATE_FUNC(CustomNodePage);
+    CREATE_FUNC(CustomDrawNodePage);
 
     void loadUI() override;
     void unloadUI() override;
@@ -22,16 +23,17 @@ public:
     void onExecuteState() override;
     void onExitState() override;
 
-    virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    void nextTest(cocos2d::CCObject* sender);
+    void preTest(cocos2d::CCObject* sender);
 
 protected:
-    CustomNodePage();
-    ~CustomNodePage();
-};
+    CustomDrawNodePage();
+    ~CustomDrawNodePage();
 
+    typedef std::function<cocos2d::CCNode*()> CreateFunc;
+    std::vector<CreateFunc>     _createFuncs;
+    int                         _testIndex;
+};
 
 class ShaderNode : public cocos2d::CCNode
 {

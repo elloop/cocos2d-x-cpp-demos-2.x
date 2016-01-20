@@ -4,7 +4,7 @@
 #include "message/MessageCenter.h"
 USING_NS_CC;
 
-PageManager::PageManager() : stateMachineRef_(rootPage()->stateMachine_)
+PageManager::PageManager() : stateMachineRef_(rootPage()->_stateMachine)
 {}
 
 PageManager::~PageManager()
@@ -96,17 +96,24 @@ void PageManager::changePage(const std::string &pageName)
     }
 
     // add page as child of MainScene's middle layer
-    auto middleLayer = rootPage()->middleLayer_;
+    auto middleLayer = rootPage()->_middleLayer;
     if ( middleLayer )
     {
         middleLayer->removeAllChildren();
         middleLayer->addChild(page);
     }
+    
+    bool shouldShowTestBtn = ("MainPage" != currentPageName_);
+    rootPage()->_preTestBtn ? 
+        rootPage()->_preTestBtn->setVisible(shouldShowTestBtn) : 0;
+    rootPage()->_nextTestBtn ? 
+        rootPage()->_nextTestBtn->setVisible(shouldShowTestBtn) : 0;
+
 }
 
 void PageManager::changeBackGround(const std::string &pic)
 {
-    auto backLlayer = rootPage()->backLayer_;
+    auto backLlayer = rootPage()->_backLayer;
     if ( backLlayer )
     {
         backLlayer->removeAllChildren();

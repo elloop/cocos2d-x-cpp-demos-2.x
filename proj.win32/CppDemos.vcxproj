@@ -140,7 +140,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\message\MessageCenter.cpp" />
     <ClCompile Include="..\Classes\PageManager.cpp" />
     <ClCompile Include="..\Classes\pages\BloodFlashPage.cpp" />
-    <ClCompile Include="..\Classes\pages\CustomNodePage.cpp" />
+    <ClCompile Include="..\Classes\pages\CustomDrawNodePage.cpp" />
     <ClCompile Include="..\Classes\pages\CustomSpritePage.cpp" />
     <ClCompile Include="..\Classes\pages\LittleTouchPage.cpp" />
     <ClCompile Include="..\Classes\pages\RootPage.cpp" />
@@ -168,7 +168,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\message\MessageCenter.h" />
     <ClInclude Include="..\Classes\PageManager.h" />
     <ClInclude Include="..\Classes\pages\BloodFlashPage.h" />
-    <ClInclude Include="..\Classes\pages\CustomNodePage.h" />
+    <ClInclude Include="..\Classes\pages\CustomDrawNodePage.h" />
     <ClInclude Include="..\Classes\pages\CustomSpritePage.h" />
     <ClInclude Include="..\Classes\pages\LittleTouchPage.h" />
     <ClInclude Include="..\Classes\pages\RootPage.h" />
@@ -177,6 +177,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\pages\SpriteBatchNodeTestPage.h" />
     <ClInclude Include="..\Classes\pages\SpriteFrameTestPage.h" />
     <ClInclude Include="..\Classes\pages\SuperPage.h" />
+    <ClInclude Include="..\Classes\pages\TestCallback.h" />
     <ClInclude Include="..\Classes\pages\TouchTestPage.h" />
     <ClInclude Include="..\Classes\rapid_json\allocators.h" />
     <ClInclude Include="..\Classes\rapid_json\document.h" />

@@ -92,10 +92,10 @@
     <ClCompile Include="..\Classes\pages\CustomSpritePage.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\pages\CustomNodePage.cpp">
+    <ClCompile Include="..\Classes\pages\BloodFlashPage.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\pages\BloodFlashPage.cpp">
+    <ClCompile Include="..\Classes\pages\CustomDrawNodePage.cpp">
       <Filter>Classes\pages</Filter>
     </ClCompile>
   </ItemGroup>
@@ -265,10 +265,13 @@
     <ClInclude Include="..\Classes\pages\CustomSpritePage.h">
       <Filter>Classes\pages</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\pages\CustomNodePage.h">
+    <ClInclude Include="..\Classes\pages\BloodFlashPage.h">
       <Filter>Classes\pages</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\pages\BloodFlashPage.h">
+    <ClInclude Include="..\Classes\pages\CustomDrawNodePage.h">
+      <Filter>Classes\pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pages\TestCallback.h">
       <Filter>Classes\pages</Filter>
     </ClInclude>
   </ItemGroup>
