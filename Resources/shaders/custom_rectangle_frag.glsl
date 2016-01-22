@@ -2,9 +2,9 @@
 precision mediump float;
 #endif
 
-varying     vec4    custom_v_color;
+uniform     vec4    custom_u_color;
 
 void main()
 {
-    gl_FragColor = custom_v_color;
+    gl_FragColor = custom_u_color; 
 }

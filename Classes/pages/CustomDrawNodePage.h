@@ -60,18 +60,15 @@ private:
 class CustomDrawNode : public cocos2d::CCNode
 {
 public:
-    static CustomDrawNode* create(const char *vs, const char *fs);
-    void draw() override {}
+    static CustomDrawNode* create(const char *vsFileName, const char *fsFileName);
 
-    bool initWithShaders(const char *vs, const char *fs);
+    bool initWithShaders(const char *vsFileName, const char *fsFileName);
 
     virtual void customSetupBeforeLink() {}
     virtual void customUniformsUpdate() {}
 
 protected:
-    CustomDrawNode()
-    {}
-    
+    CustomDrawNode() {}
 };
 
 class CustomRectangleNode : public CustomDrawNode
@@ -88,5 +85,26 @@ protected:
 
     const attribute     _attribPosition;
     uniform             _uniformColor;
+};
+
+class ColorfulRectangle : public CustomDrawNode
+{
+public:
+    static ColorfulRectangle* create(const char *vs, const char *fs);
+    void draw() override;
+    void customSetupBeforeLink() override;
+    void customUniformsUpdate() override;
+
+protected:
+    struct V2F_C4F 
+    {
+        GLfloat x, y;
+        GLfloat r,g,b,a;
+    };
+    ColorfulRectangle() : _attribPosition(0), _attribColor(0)
+    {}
+
+    const attribute     _attribPosition;
+    const attribute     _attribColor;
 };
 #endif

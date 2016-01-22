@@ -11,8 +11,6 @@ bool customNodePageCreated = PageManager::getInstance()->registerPage(
 
 void CustomDrawNodePage::loadUI()
 {
-    setTouchEnabled(true);
-    setTouchMode(kCCTouchesOneByOne);
     CCAssert(_testIndex >= 0 && _testIndex < _createFuncs.size(), "wrong index");
     auto node = _createFuncs[_testIndex]();
     // do not set position for CustomRectangleNode.
@@ -45,6 +43,7 @@ void CustomDrawNodePage::onEnterState()
         std::bind(&ShaderNode::create, "Shaders/example_Flower.vsh", "Shaders/example_Flower.fsh"),
         std::bind(&ShaderNode::create, "Shaders/example_Plasma.vsh", "Shaders/example_Plasma.fsh"),
         std::bind(&CustomRectangleNode::create, "shaders/custom_rectangle_vert.glsl", "shaders/custom_rectangle_frag.glsl"),
+        std::bind(&ColorfulRectangle::create, "shaders/colorful_rect_vert.glsl", "shaders/colorful_rect_frag.glsl"),
     });
 
     loadUI();
@@ -261,9 +260,73 @@ void CustomRectangleNode::draw()
     };
 
     glEnableVertexAttribArray(_attribPosition);
-    glVertexAttribPointer(_attribPosition, 2, GL_FLOAT, false, sizeof(GL_FLOAT)*2, vertexes);
+    glVertexAttribPointer(_attribPosition, 2, GL_FLOAT, false, sizeof(GLfloat)*2, vertexes);
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
+    //glDisableVertexAttribArray(_attribPosition);
+
     CC_INCREMENT_GL_DRAWS(1);
+}
+
+ColorfulRectangle* ColorfulRectangle::create(const char *vs, const char *fs)
+{
+    auto self = new ColorfulRectangle;
+    if (self && self->initWithShaders(vs, fs)) 
+    {
+        self->autorelease();
+        return self;
+    }
+    return nullptr;
+}
+
+void ColorfulRectangle::draw()
+{
+    CC_NODE_DRAW_SETUP();
+
+    auto size = CocosWindow::size();
+    auto center = CocosWindow::center();
+    GLfloat width = size.width / 2;
+    GLfloat height = size.height / 2;
+    GLfloat x = center.x - width / 2;
+    GLfloat y = center.y - height / 2;
+
+    V2F_C4F vertexes[] =
+    {
+        x,          y,          CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
+        x + width,  y,          CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
+        x,          y + height, CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
+        x + width,  y + height, CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
+    };
+
+    /*V2F_C4F vertexes[] =
+    {
+        x, y, 255, 0, 0, 255,
+        x + width, y, 0, 255, 0, 255,
+        x, y + height, 0, 0, 255, 255,
+        x + width, y + height, 255, 255, 255, 255,
+    };*/
+
+    glEnableVertexAttribArray(_attribPosition);
+    glVertexAttribPointer(_attribPosition, 4, GL_FLOAT, false, sizeof(V2F_C4F), &vertexes[0].x);
+
+    glEnableVertexAttribArray(_attribColor);
+    glVertexAttribPointer(_attribColor, 4, GL_FLOAT, false, sizeof(V2F_C4F), &vertexes[0].r);
+
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    //glDisableVertexAttribArray(_attribPosition);
+
+    CC_INCREMENT_GL_DRAWS(1);
+}
+
+void ColorfulRectangle::customSetupBeforeLink()
+{
+    getShaderProgram()->addAttribute("custom_a_position", _attribPosition);
+    getShaderProgram()->addAttribute("custom_a_color", _attribColor);
+}
+
+void ColorfulRectangle::customUniformsUpdate()
+{
+    // nothing.
 }
