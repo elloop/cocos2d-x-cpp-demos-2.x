@@ -308,9 +308,8 @@ void ColorfulRectangle::draw()
     };*/
 
     glEnableVertexAttribArray(_attribPosition);
-    glVertexAttribPointer(_attribPosition, 4, GL_FLOAT, false, sizeof(V2F_C4F), &vertexes[0].x);
-
     glEnableVertexAttribArray(_attribColor);
+    glVertexAttribPointer(_attribPosition, 2, GL_FLOAT, false, sizeof(V2F_C4F), &vertexes[0].x);
     glVertexAttribPointer(_attribColor, 4, GL_FLOAT, false, sizeof(V2F_C4F), &vertexes[0].r);
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

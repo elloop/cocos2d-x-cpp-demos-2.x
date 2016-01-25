@@ -101,10 +101,12 @@ protected:
         GLfloat x, y;
         GLfloat r,g,b,a;
     };
-    ColorfulRectangle() : _attribPosition(0), _attribColor(0)
+    ColorfulRectangle() : _attribPosition(0), _attribColor(1)
     {}
 
     const attribute     _attribPosition;
     const attribute     _attribColor;
+
+    std::tuple<float>   _randomColor4f;
 };
 #endif

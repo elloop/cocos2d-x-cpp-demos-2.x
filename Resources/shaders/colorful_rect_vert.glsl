@@ -2,7 +2,7 @@
 precision mediump float;
 #endif
 
-attribute   vec4    custom_a_position;
+attribute   vec2    custom_a_position;
 attribute   vec4    custom_a_color;
 
 varying     vec4    v_color;
