@@ -14,7 +14,8 @@ void CustomDrawNodePage::loadUI()
     CCAssert(_testIndex >= 0 && _testIndex < _createFuncs.size(), "wrong index");
     auto node = _createFuncs[_testIndex]();
     // do not set position for CustomRectangleNode.
-    if ( nullptr == dynamic_cast<CustomRectangleNode*>( node ) )
+    if ( nullptr == dynamic_cast<CustomRectangleNode*>( node ) &&
+         nullptr == dynamic_cast<ColorfulRectangle*>( node ))
     {
         node->setPosition(CocosWindow::center());
     }
@@ -293,19 +294,11 @@ void ColorfulRectangle::draw()
 
     V2F_C4F vertexes[] =
     {
-        x,          y,          CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
-        x + width,  y,          CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
-        x,          y + height, CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
-        x + width,  y + height, CCRANDOM_0_1(), CCRANDOM_0_1(), CCRANDOM_0_1(), 1,
+        x,          y,          _randomColor4f[0][0], _randomColor4f[0][1], _randomColor4f[0][2], 1,
+        x + width,  y,          _randomColor4f[1][0], _randomColor4f[1][1], _randomColor4f[1][2], 1,
+        x,          y + height, _randomColor4f[2][0], _randomColor4f[2][1], _randomColor4f[2][2], 1,
+        x + width,  y + height, _randomColor4f[3][0], _randomColor4f[3][1], _randomColor4f[3][2], 1,
     };
-
-    /*V2F_C4F vertexes[] =
-    {
-        x, y, 255, 0, 0, 255,
-        x + width, y, 0, 255, 0, 255,
-        x, y + height, 0, 0, 255, 255,
-        x + width, y + height, 255, 255, 255, 255,
-    };*/
 
     glEnableVertexAttribArray(_attribPosition);
     glEnableVertexAttribArray(_attribColor);
@@ -313,8 +306,6 @@ void ColorfulRectangle::draw()
     glVertexAttribPointer(_attribColor, 4, GL_FLOAT, false, sizeof(V2F_C4F), &vertexes[0].r);
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-    //glDisableVertexAttribArray(_attribPosition);
 
     CC_INCREMENT_GL_DRAWS(1);
 }

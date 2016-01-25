@@ -9,7 +9,7 @@
 #include "message/Message.h"
 #include <vector>
 
-class CustomDrawNodePage 
+class CustomDrawNodePage
     : public SuperPage
     , public State<RootPage>
 {
@@ -30,7 +30,7 @@ protected:
     CustomDrawNodePage();
     ~CustomDrawNodePage();
 
-    typedef std::function<cocos2d::CCNode*()> CreateFunc;
+    typedef std::function<cocos2d::CCNode*( )> CreateFunc;
     std::vector<CreateFunc>     _createFuncs;
     int                         _testIndex;
 };
@@ -49,7 +49,7 @@ private:
     uniform             _unifromCenter;
     uniform             _uniformResolution;
     uniform             _uniformTime;
-    
+
     float               _time;
     cocos2d::ccVertex2F _resolution;
     cocos2d::ccVertex2F _center;
@@ -64,11 +64,14 @@ public:
 
     bool initWithShaders(const char *vsFileName, const char *fsFileName);
 
-    virtual void customSetupBeforeLink() {}
-    virtual void customUniformsUpdate() {}
+    virtual void customSetupBeforeLink()
+    {}
+    virtual void customUniformsUpdate()
+    {}
 
 protected:
-    CustomDrawNode() {}
+    CustomDrawNode()
+    {}
 };
 
 class CustomRectangleNode : public CustomDrawNode
@@ -96,17 +99,26 @@ public:
     void customUniformsUpdate() override;
 
 protected:
-    struct V2F_C4F 
+
+    struct V2F_C4F
     {
         GLfloat x, y;
-        GLfloat r,g,b,a;
+        GLfloat r, g, b, a;
     };
+
     ColorfulRectangle() : _attribPosition(0), _attribColor(1)
-    {}
+    {
+        for ( size_t i = 0; i < 4; ++i )
+        {
+            _randomColor4f[i][0] = CCRANDOM_0_1();
+            _randomColor4f[i][1] = CCRANDOM_0_1();
+            _randomColor4f[i][2] = CCRANDOM_0_1();
+        }
+    }
 
     const attribute     _attribPosition;
     const attribute     _attribColor;
 
-    std::tuple<float>   _randomColor4f;
+    GLfloat             _randomColor4f[4][3];
 };
 #endif
