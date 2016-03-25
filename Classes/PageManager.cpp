@@ -105,9 +105,9 @@ void PageManager::changePage(const std::string &pageName)
     
     bool shouldShowTestBtn = ("MainPage" != currentPageName_);
     rootPage()->_preTestBtn ? 
-        rootPage()->_preTestBtn->setVisible(shouldShowTestBtn) : 0;
+        rootPage()->_preTestBtn->setVisible(shouldShowTestBtn) : void(0);
     rootPage()->_nextTestBtn ? 
-        rootPage()->_nextTestBtn->setVisible(shouldShowTestBtn) : 0;
+        rootPage()->_nextTestBtn->setVisible(shouldShowTestBtn) : void(0);
 
 }
 

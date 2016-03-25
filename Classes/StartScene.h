@@ -39,7 +39,7 @@ public:
     bool init() override;
     void addTestScene();
     void addTestData();
-    void StartScene::quitGame(cocos2d::CCObject* obj);
+    void quitGame(cocos2d::CCObject* obj);
 
 protected:
     StartScene() {}

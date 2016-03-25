@@ -23,7 +23,7 @@ void CocosUtil::log(const char *format, ...) {
     char msg[LOG_MAX_LENGTH];
     va_list args;
     va_start(args, format);
-    vsnprintf_s(msg, LOG_MAX_LENGTH, LOG_MAX_LENGTH, format,  args);
+    vsnprintf(msg, LOG_MAX_LENGTH, format,  args);
     va_end(args);
     if (logStream_.is_open()) {
         logStream_ << msg ;

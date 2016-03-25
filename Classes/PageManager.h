@@ -50,7 +50,7 @@ private:
     StateMachine<RootPage>     *&stateMachineRef_;
 };
 
-template <typename T = SuperPage>
+template <typename T>
 T* PageManager::getPage(const std::string &name) const 
 {
     auto iter = pages_.find(name);

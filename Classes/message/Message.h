@@ -14,6 +14,23 @@ enum class MessageType
     kMessageTypeChangeBackground,
 };
 
+// custom specialization of std::hash can be injected in namespace std
+namespace std
+{
+    template<> struct hash<MessageType>
+    {
+        typedef MessageType argument_type;
+        typedef std::size_t result_type;
+        result_type operator()(argument_type const& m) const
+        {
+            result_type const h1 ( std::hash<int>()(static_cast<int>(m)));
+            result_type const h2 ( std::hash<int>()(static_cast<int>(m)));
+            return h1 ^ (h2 << 1); // or use boost::hash_combine
+        }
+    };
+}
+
+
 class Message
 {
 public:

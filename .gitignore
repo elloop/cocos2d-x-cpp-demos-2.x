@@ -1,7 +1,7 @@
 ## Ignore cocos2d-x 2.2.3 proj.[platname] folders.
 proj.android/
 proj.blackberry/
-proj.ios/
+# proj.ios/   # I also use Xcode to develop now.
 proj.linux/
 proj.mac/
 proj.marmalade/
