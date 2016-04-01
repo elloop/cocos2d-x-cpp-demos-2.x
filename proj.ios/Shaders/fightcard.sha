@@ -1,0 +1,56 @@
+// Shader write by Luyungeng
+
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+varying vec4 v_fragmentColor;
+varying vec2 v_texCoord;
+
+uniform sampler2D CC_Texture0;
+
+uniform float currentLife;
+uniform float displayLife;
+uniform vec4 addColor;
+uniform int flashType;
+
+void main() {
+	vec4 sum = vec4(0.0);
+	sum = texture2D(CC_Texture0, v_texCoord);
+	vec4 outColor = sum;
+	if(flashType==0)
+	{
+		if(v_texCoord.y<(1.0-displayLife))
+		{
+			float ave = (sum.r+sum.g+sum.b)/3.0;
+			outColor.r = ave*0.6;
+			outColor.g = ave*0.6;
+			outColor.b = ave*0.6;
+		}	
+		else if(v_texCoord.y<(1.0-currentLife))
+		{
+			outColor.r = sum.r*0.3+0.7;
+			outColor.g = sum.g*0.3;
+			outColor.b = sum.b*0.3;
+		}
+		
+		
+		outColor.r = outColor.r + addColor.r;
+		outColor.g = outColor.g + addColor.g;
+		outColor.b = outColor.b + addColor.b;
+	}
+	if(flashType==1)
+	{
+		outColor.r = sum.r*0.3+0.7;
+		outColor.g = sum.g*0.3;
+		outColor.b = sum.b*0.3;
+	}
+	if(flashType==2)
+	{
+		outColor.r = sum.r*0.3+0.7;
+		outColor.g = sum.g*0.3+0.7;
+		outColor.b = sum.b*0.3;
+	}
+	gl_FragColor = outColor;
+}
+

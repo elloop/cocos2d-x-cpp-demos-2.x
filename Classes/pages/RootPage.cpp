@@ -101,7 +101,7 @@ void RootPage::addMenuButtons()
 
     // next test button.
     _nextTestBtn = CCMenuItemImage::create(
-        "images/pre.png", "images/pre.png",
+        "Images/pre.png", "Images/pre.png",
         this,
         menu_selector(RootPage::onNextClicked));
     _nextTestBtn->retain();
@@ -113,7 +113,7 @@ void RootPage::addMenuButtons()
 
     // pre test button.
     _preTestBtn = CCMenuItemImage::create(
-        "images/pre.png", "images/pre.png",
+        "Images/pre.png", "Images/pre.png",
         this,
         menu_selector(RootPage::onPreClicked));
     _preTestBtn->retain();
@@ -132,6 +132,9 @@ void RootPage::addMenuButtons()
 void RootPage::quitGame(CCObject *sender)
 {
     CCDirector::sharedDirector()->end();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    exit(0);
+#endif
 }
 
 void RootPage::goHome(cocos2d::CCObject *sender)

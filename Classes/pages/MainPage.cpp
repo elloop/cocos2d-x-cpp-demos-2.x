@@ -26,7 +26,6 @@ void MainPage::loadUI()
 
     // scrollviewµÄcontainer
     CCNode *container = CCNode::create();
-    int tag(0);
     
     int testCount = TestDataCenter::getInstance()->testDataCount();
     for (int i=0; i<testCount; ++i) 
@@ -83,8 +82,6 @@ bool TestItem::initWithSize(float width, float height)
     auto data = TestDataCenter::getInstance()->getTestDataItemByIndex(itemId_);
     if (data) 
     {
-        float sizeX(0), sizeY(0);
-
         CCSprite *icon = CCSprite::create(data->icon_.c_str());
         CCAssert(icon, "");
         icon->setAnchorPoint(CCPointZero);

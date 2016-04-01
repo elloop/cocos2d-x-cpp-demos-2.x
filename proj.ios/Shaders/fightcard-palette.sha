@@ -1,0 +1,102 @@
+// Shader write by Luyungeng
+
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+varying vec4 v_fragmentColor;
+varying vec2 v_texCoord;
+
+uniform sampler2D CC_Texture0;
+
+uniform sampler2D CC_Palette;														
+uniform vec2	  CC_TexSize;
+
+uniform float currentLife;
+uniform float displayLife;
+uniform vec4 addColor;
+uniform int flashType;
+
+vec4 getCoordColor(vec2 texCoord)													
+{
+	//modified by zhenhui. replace 16*16 with 256 *1, see CCTexture2D.cpp																					
+	vec4 alpha_clr = texture2D(CC_Texture0, texCoord);
+	float coord_x = alpha_clr.a;
+	return texture2D(CC_Palette, vec2(coord_x, 0.0));						
+}
+
+vec4 palette_nearest()																			
+{				
+	return getCoordColor(v_texCoord);							
+}
+
+vec4 palette_linear()																			
+{												
+	float x_offset = 0.25;															
+	float y_offset = 0.25;															
+	vec2 texCoord = v_texCoord * CC_TexSize;										
+	vec2 l_pos = texCoord + vec2(-x_offset, 0);								
+	vec2 r_pos = texCoord + vec2(x_offset, 0);								
+	l_pos /= CC_TexSize;															
+	r_pos /= CC_TexSize;															
+	return getCoordColor(l_pos) * 0.5 + getCoordColor(r_pos) * 0.5;
+}
+																
+vec4 palette_rect()																			
+{																					
+	float x_offset = 0.25;															
+	float y_offset = 0.25;															
+	vec2 texCoord = v_texCoord * CC_TexSize;										
+	vec2 lt_pos = texCoord + vec2(-x_offset, -y_offset);							
+	vec2 rt_pos = texCoord + vec2(x_offset, -y_offset);								
+	vec2 lb_pos = texCoord + vec2(-x_offset, y_offset);								
+	vec2 rb_pos = texCoord + vec2(x_offset, y_offset);								
+	lb_pos /= CC_TexSize;															
+	lt_pos /= CC_TexSize;															
+	rt_pos /= CC_TexSize;															
+	rb_pos /= CC_TexSize;															
+	return  getCoordColor(lb_pos) * 0.25 + 									
+			getCoordColor(lt_pos) * 0.25 + 									
+			getCoordColor(rt_pos) * 0.25 + 									
+			getCoordColor(rb_pos) * 0.25;			
+}
+
+void main() {
+	vec4 sum = palette_rect();
+	vec4 outColor = sum;
+	if(flashType==0)
+	{
+		if(v_texCoord.y<(1.0-displayLife))
+		{
+			float ave = (sum.r+sum.g+sum.b)/3.0;
+			outColor.r = ave*0.6;
+			outColor.g = ave*0.6;
+			outColor.b = ave*0.6;
+		}	
+		else if(v_texCoord.y<(1.0-currentLife))
+		{
+			outColor.r = sum.r*0.3+0.7;
+			outColor.g = sum.g*0.3;
+			outColor.b = sum.b*0.3;
+		}
+		
+		
+		outColor.r = outColor.r + addColor.r;
+		outColor.g = outColor.g + addColor.g;
+		outColor.b = outColor.b + addColor.b;
+	}
+	if(flashType==1)
+	{
+		outColor.r = sum.r*0.3+0.7;
+		outColor.g = sum.g*0.3;
+		outColor.b = sum.b*0.3;
+	}
+	if(flashType==2)
+	{
+		outColor.r = sum.r*0.3+0.7;
+		outColor.g = sum.g*0.3+0.7;
+		outColor.b = sum.b*0.3;
+	}
+	gl_FragColor = outColor;
+}
+

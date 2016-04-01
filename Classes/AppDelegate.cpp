@@ -27,8 +27,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 
-    CocosUtil::openLog();
-
+    
     LogicDirector::getInstance()->begin();
 
 

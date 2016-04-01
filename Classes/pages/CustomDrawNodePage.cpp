@@ -37,14 +37,14 @@ void CustomDrawNodePage::onEnterState()
     _createFuncs.clear();
     _createFuncs.insert(_createFuncs.begin(), 
     {
-        std::bind(&ShaderNode::create, "shaders/example_Monjori.vsh", "shaders/example_Monjori.fsh"),
+        std::bind(&ShaderNode::create, "Shaders/example_Monjori.vsh", "Shaders/example_Monjori.fsh"),
         std::bind(&ShaderNode::create, "Shaders/example_Mandelbrot.vsh", "Shaders/example_Mandelbrot.fsh"),
         std::bind(&ShaderNode::create, "Shaders/example_Julia.vsh", "Shaders/example_Julia.fsh"),
         std::bind(&ShaderNode::create, "Shaders/example_Heart.vsh", "Shaders/example_Heart.fsh"),
         std::bind(&ShaderNode::create, "Shaders/example_Flower.vsh", "Shaders/example_Flower.fsh"),
         std::bind(&ShaderNode::create, "Shaders/example_Plasma.vsh", "Shaders/example_Plasma.fsh"),
-        std::bind(&CustomRectangleNode::create, "shaders/custom_rectangle_vert.glsl", "shaders/custom_rectangle_frag.glsl"),
-        std::bind(&ColorfulRectangle::create, "shaders/colorful_rect_vert.glsl", "shaders/colorful_rect_frag.glsl"),
+        std::bind(&CustomRectangleNode::create, "Shaders/custom_rectangle_vert.glsl", "Shaders/custom_rectangle_frag.glsl"),
+        std::bind(&ColorfulRectangle::create, "Shaders/colorful_rect_vert.glsl", "Shaders/colorful_rect_frag.glsl"),
     });
 
     loadUI();

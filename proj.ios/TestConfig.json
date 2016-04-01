@@ -1,0 +1,65 @@
+{
+    "items":
+    [
+        {
+            "icon" : "DemoIcon/superman.jpg",
+            "description": "MenuTest",
+            "page": "MenuTestPage"
+        },
+        {
+            "icon" : "DemoIcon/fight.jpg",
+            "description": "AnimationTest",
+            "page": "AnimationTestPage"
+        },
+        {
+            "icon" : "DemoIcon/man-red-hair.jpg",
+            "description": "LabelTest",
+            "page": "LabelTestPage"
+        },
+        {
+            "icon" : "DemoIcon/automan.jpg",
+            "description": "AudioTest",
+            "page": "AudioTestPage"
+        },
+        {
+            "icon" : "DemoIcon/moto.jpg",
+            "description": "TiledMapTest",
+            "page": "TiledMapTestPage"
+        },
+		{
+            "icon" : "DemoIcon/bow.jpg",
+            "description": "TouchTest",
+            "page": "TouchTestPage"
+        },
+		{
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "ScrollViewTest",
+            "page": "ScrollviewTestPage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "SpriteBatchNode",
+            "page": "SpriteBatchNodeTestPage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "SpriteFrameTestPage",
+            "page": "SpriteFrameTestPage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "Custom Sprite",
+            "page": "CustomSpritePage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "custom draw node",
+            "page": "CustomDrawNodePage"
+        },
+        {
+            "icon" : "DemoIcon/scroll1.jpg",
+            "description": "Blood flash page",
+            "page": "BloodFlashPage"
+        }
+    ]
+}
