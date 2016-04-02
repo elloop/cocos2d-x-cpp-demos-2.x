@@ -22,10 +22,10 @@ public:
     void onExecuteState() override;
     void onExitState() override;
 
-    virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
 
 protected:
     BloodFlashPage();
@@ -47,7 +47,7 @@ public:
     void initUniforms();
 
 private:
-    BloodFlashSprite() :   _fragShaderName("shaders/blood_flash_fs.glsl")
+    BloodFlashSprite() :   _fragShaderName("Shaders/blood_flash_fs.glsl")
     {}
 
     std::string     _fragShaderName;
