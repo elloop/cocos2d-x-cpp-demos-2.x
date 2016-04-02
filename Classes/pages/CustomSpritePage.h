@@ -22,10 +22,10 @@ public:
     void onExecuteState() override;
     void onExitState() override;
 
-    virtual bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
-    virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
+    void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) override;
 
 protected:
     CustomSpritePage();
@@ -41,7 +41,7 @@ public:
         const cocos2d::CCRect& rect) override;
     void draw() override;
 private:
-    RedSprite() :   _shaderFile("shaders/position_texture_color_frag.glsl")
+    RedSprite() :   _shaderFile("Shaders/position_texture_color_frag.glsl")
     {}
     std::string     _shaderFile;
 };
