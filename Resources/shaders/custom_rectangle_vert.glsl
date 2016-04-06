@@ -2,6 +2,7 @@
 precision mediump float;
 #endif
 
+hh;
 attribute   vec4    custom_a_position;
 
 void main()

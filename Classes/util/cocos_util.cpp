@@ -15,7 +15,7 @@ void CocosUtil::markPositionWithDot(
     parent->addChild(node);
     node->setPosition(pos);
     node->drawDot(CCPointZero, radius, color4f);
-    CCLOG("mark pos: (%.2f, %.2f)\n", pos.x, pos.y);
+//    CCLOG("mark pos: (%.2f, %.2f)\n", pos.x, pos.y);
 }
 
 void CocosUtil::log(const char *format, ...) {

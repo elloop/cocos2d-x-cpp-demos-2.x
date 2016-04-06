@@ -44,7 +44,7 @@ public:
     void setPosition(const cocos2d::CCPoint &position) override;
 
     void draw() override;
-    void update(float dt);
+    void update(float dt) override;
 private:
     uniform             _unifromCenter;
     uniform             _uniformResolution;

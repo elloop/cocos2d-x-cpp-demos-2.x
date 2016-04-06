@@ -235,12 +235,13 @@
 		379BB9CB17F03F3700829B88 /* DictionaryHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB97C17F03F3700829B88 /* DictionaryHelper.cpp */; };
 		379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* GUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* SceneReader.cpp */; };
+		3E0504F51CB533CF009D8DD0 /* ScreenTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E0504F31CB533CF009D8DD0 /* ScreenTest.cpp */; };
+		3E0504FA1CB539AD009D8DD0 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E0504F91CB539AD009D8DD0 /* HelloWorld.png */; };
 		3E30C0A11CA81289008024E4 /* animations in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C0971CA81289008024E4 /* animations */; };
 		3E30C0A21CA81289008024E4 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C0981CA81289008024E4 /* CloseNormal.png */; };
 		3E30C0A31CA81289008024E4 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C0991CA81289008024E4 /* CloseSelected.png */; };
 		3E30C0A41CA81289008024E4 /* DemoIcon in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C09A1CA81289008024E4 /* DemoIcon */; };
 		3E30C0A51CA81289008024E4 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C09B1CA81289008024E4 /* fonts */; };
-		3E30C0A61CA81289008024E4 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C09C1CA81289008024E4 /* HelloWorld.png */; };
 		3E30C0A71CA81289008024E4 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C09D1CA81289008024E4 /* Images */; };
 		3E30C0A91CA81289008024E4 /* SpriteFrame in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C09F1CA81289008024E4 /* SpriteFrame */; };
 		3E30C0AA1CA81289008024E4 /* TestConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E30C0A01CA81289008024E4 /* TestConfig.json */; };
@@ -773,12 +774,14 @@
 		379BB99217F03F3700829B88 /* GUIReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIReader.h; sourceTree = "<group>"; };
 		379BB99317F03F3700829B88 /* SceneReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneReader.cpp; sourceTree = "<group>"; };
 		379BB99417F03F3700829B88 /* SceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneReader.h; sourceTree = "<group>"; };
+		3E0504F31CB533CF009D8DD0 /* ScreenTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScreenTest.cpp; sourceTree = "<group>"; };
+		3E0504F41CB533CF009D8DD0 /* ScreenTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenTest.h; sourceTree = "<group>"; };
+		3E0504F91CB539AD009D8DD0 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		3E30C0971CA81289008024E4 /* animations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = animations; sourceTree = "<group>"; };
 		3E30C0981CA81289008024E4 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		3E30C0991CA81289008024E4 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		3E30C09A1CA81289008024E4 /* DemoIcon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DemoIcon; sourceTree = "<group>"; };
 		3E30C09B1CA81289008024E4 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
-		3E30C09C1CA81289008024E4 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		3E30C09D1CA81289008024E4 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		3E30C09F1CA81289008024E4 /* SpriteFrame */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SpriteFrame; sourceTree = "<group>"; };
 		3E30C0A01CA81289008024E4 /* TestConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestConfig.json; sourceTree = "<group>"; };
@@ -2004,13 +2007,13 @@
 		3E30BFD41CA7F739008024E4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3E0504F91CB539AD009D8DD0 /* HelloWorld.png */,
 				3E39EC121CAE69F5002A130B /* Shaders */,
 				3E30C0971CA81289008024E4 /* animations */,
 				3E30C0981CA81289008024E4 /* CloseNormal.png */,
 				3E30C0991CA81289008024E4 /* CloseSelected.png */,
 				3E30C09A1CA81289008024E4 /* DemoIcon */,
 				3E30C09B1CA81289008024E4 /* fonts */,
-				3E30C09C1CA81289008024E4 /* HelloWorld.png */,
 				3E30C09D1CA81289008024E4 /* Images */,
 				3E30C09F1CA81289008024E4 /* SpriteFrame */,
 				3E30C0A01CA81289008024E4 /* TestConfig.json */,
@@ -2055,6 +2058,8 @@
 		3EF8EA9A1CA5450C00D1EED3 /* pages */ = {
 			isa = PBXGroup;
 			children = (
+				3E0504F31CB533CF009D8DD0 /* ScreenTest.cpp */,
+				3E0504F41CB533CF009D8DD0 /* ScreenTest.h */,
 				3EF8EA9B1CA5450C00D1EED3 /* BloodFlashPage.cpp */,
 				3EF8EA9C1CA5450C00D1EED3 /* BloodFlashPage.h */,
 				3EF8EA9D1CA5450C00D1EED3 /* CustomDrawNodePage.cpp */,
@@ -2237,9 +2242,9 @@
 				3E30C0AA1CA81289008024E4 /* TestConfig.json in Resources */,
 				3E30C0A21CA81289008024E4 /* CloseNormal.png in Resources */,
 				3E30C0A11CA81289008024E4 /* animations in Resources */,
+				3E0504FA1CB539AD009D8DD0 /* HelloWorld.png in Resources */,
 				3E30C0A51CA81289008024E4 /* fonts in Resources */,
 				3E30C0A71CA81289008024E4 /* Images in Resources */,
-				3E30C0A61CA81289008024E4 /* HelloWorld.png in Resources */,
 				3E30C0A41CA81289008024E4 /* DemoIcon in Resources */,
 				3E30C0A31CA81289008024E4 /* CloseSelected.png in Resources */,
 			);
@@ -2473,6 +2478,7 @@
 				379BB9B017F03F3700829B88 /* CCComRender.cpp in Sources */,
 				379BB9B117F03F3700829B88 /* CCInputDelegate.cpp in Sources */,
 				379BB9B317F03F3700829B88 /* UIWidget.cpp in Sources */,
+				3E0504F51CB533CF009D8DD0 /* ScreenTest.cpp in Sources */,
 				379BB9B417F03F3700829B88 /* UILayout.cpp in Sources */,
 				379BB9B617F03F3700829B88 /* UILayoutParameter.cpp in Sources */,
 				379BB9B717F03F3700829B88 /* UILayoutDefine.cpp in Sources */,

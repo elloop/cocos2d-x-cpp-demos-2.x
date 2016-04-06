@@ -27,6 +27,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 
+    // screen adapter
+    CCSize design_size = CCSizeMake(960, 640);
+    
+    CCSize screen_size = CCEGLView::sharedOpenGLView()->getFrameSize();
+    CCLog("screen: (%.2f, %.2f)\n", screen_size.width, screen_size.height);
+//    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(design_size.width, design_size.height, ResolutionPolicy::kResolutionFixedWidth);
+    
+    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(design_size.width, design_size.height, ResolutionPolicy::kResolutionNoBorder);
     
     LogicDirector::getInstance()->begin();
 

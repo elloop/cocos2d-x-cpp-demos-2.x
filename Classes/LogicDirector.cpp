@@ -35,7 +35,8 @@ void LogicDirector::begin()
     }
     mainScene_->addChild(rootPage);
     CCDirector::sharedDirector()->runWithScene(mainScene_);
-    MsgChangePage msg("MainPage");
+//    MsgChangePage msg("MainPage");
+    MsgChangePage msg("ScreenTestLayer");
     MessageCenter::getInstance()->sendMessage(&msg);
 }
 
